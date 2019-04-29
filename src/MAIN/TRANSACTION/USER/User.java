@@ -151,7 +151,7 @@ public User(User user)
 
     public void updateUserList(){
     	
-    	//º¯°æ»çÇ×À» ¸®½ºÆ®¿¡ Àû¿ëÇÑ´Ù
+    	//ë³€ê²½ì‚¬í•­ì„ ë¦¬ìŠ¤íŠ¸ì— ì ìš©í•œë‹¤
         for (int i = 0; i <= userList.size(); i++) {
             if (userList.get(i).getId().equals(this.id)) {
             	userList.remove(i);
@@ -167,16 +167,16 @@ public User(User user)
     public void editPushAgreement(boolean pAgreement){
     	setPushAgreement(pushAgreement);
     	if(pushAgreement==true)
-    		System.out.println("¾Ë¸² ¼ö½ÅÀÌ µ¿ÀÇµÇ¾ú½À´Ï´Ù.");
+    		System.out.println("ì•Œë¦¼ ìˆ˜ì‹ ì´ ë™ì˜ë˜ì—ˆìŠµë‹ˆë‹¤.");
     	else
-    		System.out.println("¾Ë¸² ¼ö½ÅÀÌ °ÅºÎµÇ¾ú½À´Ï´Ù.");
+    		System.out.println("ì•Œë¦¼ ìˆ˜ì‹ ì´ ê±°ë¶€ë˜ì—ˆìŠµë‹ˆë‹¤.");
     	
     	updateUserList();
     }
     
     public void editPreferredArea(String PreferredArea){
     	setPreferredArea(PreferredArea);
-    	System.out.println("°ü½ÉÁö¿ªÀÌ º¯°æµÇ¾ú½À´Ï´Ù.");
+    	System.out.println("ê´€ì‹¬ì§€ì—­ì´ ë³€ê²½ë˜ì—ˆìŠµë‹ˆë‹¤.");
     	
     	updateUserList();
 
@@ -184,7 +184,7 @@ public User(User user)
     
     public void editOccupation(int job){
     	setOccupation(job);
-    	System.out.println("Á÷¾÷ º¯°æÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.");
+    	System.out.println("ì§ì—… ë³€ê²½ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.");
     	
     	updateUserList();
 
@@ -192,11 +192,11 @@ public User(User user)
     
     public void editContact(String contact){
     	if(contact.equals(this.contact)){
-    		System.out.println("ÇöÀç »ç¿ëÁßÀÎ ¹øÈ£ÀÔ´Ï´Ù.");
+    		System.out.println("í˜„ì¬ ì‚¬ìš©ì¤‘ì¸ ë²ˆí˜¸ì…ë‹ˆë‹¤.");
     	}
     	else{
     		setContact(contact);
-    		System.out.println("¹øÈ£ º¯°æÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.");
+    		System.out.println("ë²ˆí˜¸ ë³€ê²½ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.");
     	}
     	
     	updateUserList();
@@ -205,11 +205,11 @@ public User(User user)
     
     public void editPasswd(String pass){
     	if(pass.equals(this.password)){
-    		System.out.println("ÇöÀç »ç¿ëÁßÀÎ ºñ¹Ğ¹øÈ£ÀÔ´Ï´Ù.");
+    		System.out.println("í˜„ì¬ ì‚¬ìš©ì¤‘ì¸ ë¹„ë°€ë²ˆí˜¸ì…ë‹ˆë‹¤.");
     	}
     	else{
     		setPassword(pass);
-    		System.out.println("ºñ¹Ğ¹øÈ£°¡ º¯°æµÇ¾ú½À´Ï´Ù.");
+    		System.out.println("ë¹„ë°€ë²ˆí˜¸ê°€ ë³€ê²½ë˜ì—ˆìŠµë‹ˆë‹¤.");
     	}
     	
     	updateUserList();
@@ -238,32 +238,32 @@ public User(User user)
     	ArrayList<Board> boardList = demo.getBoardList();
     	int i;
     	System.out.println("***************************************");
-    	System.out.println("³» ±Û ¸ñ·Ï >");
+    	System.out.println("ë‚´ ê¸€ ëª©ë¡ >");
     	for(i=0; i<boardList.size(); i++){
     		Board b = boardList.get(i);
     		if(b.getId_writer().equals(id)){
-				System.out.printf("\n°Ô½Ã±Û¹øÈ£: %d\n Á¦¸ñ: %s\n ÀÛ¼ºÀÚ: %s\n ÀÛ¼ºÀÏ½Ã: %s\n", 
+				System.out.printf("\nê²Œì‹œê¸€ë²ˆí˜¸: %d\n ì œëª©: %s\n ì‘ì„±ì: %s\n ì‘ì„±ì¼ì‹œ: %s\n", 
     					b.getBoardCode(), b.getTitle(), b.getId_writer(), b.getWriteDate().toString());
     		}
     	}
     	System.out.println("***************************************\n");
-    	System.out.print("»èÁ¦ÇÒ ±Û ¹øÈ£ >");
+    	System.out.print("ì‚­ì œí•  ê¸€ ë²ˆí˜¸ >");
     	Scanner keyboard = new Scanner(System.in);
     	int code = keyboard.nextInt();
     	for(i=0; i<boardList.size(); i++){
     		Board b = boardList.get(i);
-    		if(b.getBoardCode()==code){//±Û¹øÈ£¿Í ID¸ğµÎ ÀÏÄ¡ÇØ¾ßÇÔ.
+    		if(b.getBoardCode()==code){//ê¸€ë²ˆí˜¸ì™€ IDëª¨ë‘ ì¼ì¹˜í•´ì•¼í•¨.
     			if(b.getId_writer()!=this.id){
-    				System.out.println("º»ÀÎÀÇ °Ô½Ã±ÛÀÌ ¾Æ´Õ´Ï´Ù.");
+    				System.out.println("ë³¸ì¸ì˜ ê²Œì‹œê¸€ì´ ì•„ë‹™ë‹ˆë‹¤.");
     				break;
     			}
     			boardList.remove(i);
-    			System.out.printf("\n°Ô½Ã±Û %d°¡ »èÁ¦µÇ¾ú½À´Ï´Ù.\n",code);
+    			System.out.printf("\nê²Œì‹œê¸€ %dê°€ ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤.\n",code);
     			break;
     		}
     	}
     	if(i==boardList.size()){
-    		System.out.println("»èÁ¦ÇÒ °Ô½Ã±ÛÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.\n");
+    		System.out.println("ì‚­ì œí•  ê²Œì‹œê¸€ì´ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.\n");
     	}
     }
     
@@ -271,37 +271,37 @@ public User(User user)
     	ArrayList<Board> boardList = demo.getBoardList();
     	int i;
     	System.out.println("***************************************");
-    	System.out.println("³» ±Û ¸ñ·Ï >");
+    	System.out.println("ë‚´ ê¸€ ëª©ë¡ >");
     	for(i=0; i<boardList.size(); i++){
     		Board b = boardList.get(i);
     		if(b.getId_writer().equals(id)){
-				System.out.printf("\n°Ô½Ã±Û¹øÈ£: %d\n Á¦¸ñ: %s\n ÀÛ¼ºÀÚ: %s\n ÀÛ¼ºÀÏ½Ã: %s\n", 
+				System.out.printf("\nê²Œì‹œê¸€ë²ˆí˜¸: %d\n ì œëª©: %s\n ì‘ì„±ì: %s\n ì‘ì„±ì¼ì‹œ: %s\n", 
     					b.getBoardCode(), b.getTitle(), b.getId_writer(), b.getWriteDate().toString());
     		}
     	}
     	System.out.println("***************************************\n");
-    	System.out.print("\n¼öÁ¤ÇÒ ±Û ¹øÈ£ >");
+    	System.out.print("\nìˆ˜ì •í•  ê¸€ ë²ˆí˜¸ >");
     	Scanner keyboard = new Scanner(System.in);
     	int code = keyboard.nextInt();
     	for(i=0; i<boardList.size(); i++){
     		Board b = boardList.get(i);
-    		if(b.getBoardCode()==code){//±Û¹øÈ£¿Í ID¸ğµÎ ÀÏÄ¡ÇØ¾ßÇÔ.
+    		if(b.getBoardCode()==code){//ê¸€ë²ˆí˜¸ì™€ IDëª¨ë‘ ì¼ì¹˜í•´ì•¼í•¨.
     			if(b.getId_writer()!=this.id){
-    				System.out.println("º»ÀÎÀÇ °Ô½Ã±ÛÀÌ ¾Æ´Õ´Ï´Ù.");
+    				System.out.println("ë³¸ì¸ì˜ ê²Œì‹œê¸€ì´ ì•„ë‹™ë‹ˆë‹¤.");
     				break;
     			}
-    			System.out.print("¼öÁ¤ÇÒ Á¦¸ñ > ");
+    			System.out.print("ìˆ˜ì •í•  ì œëª© > ");
     			String line = keyboard.nextLine();
     			b.setTitle(line);
-    			System.out.print("¼öÁ¤ÇÒ ³»¿ë > ");
+    			System.out.print("ìˆ˜ì •í•  ë‚´ìš© > ");
     			line = keyboard.nextLine();
     			b.setContents(line);
-    			System.out.println("\nº¯°æÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.");
+    			System.out.println("\në³€ê²½ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.");
     			break;
     		}
     	}
     	if(i==boardList.size()){
-    		System.out.println("º¯°æÇÒ °Ô½Ã±ÛÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.\n");
+    		System.out.println("ë³€ê²½í•  ê²Œì‹œê¸€ì´ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.\n");
     	}
     }
 
@@ -312,9 +312,9 @@ public User(User user)
     	for(i=0; i<boardList.size(); i++){
     		Board b = boardList.get(i);
     		if(b.getId_writer().equals(id)){
-				System.out.printf("\n°Ô½Ã±Û¹øÈ£: %d\n Á¦¸ñ: %s\n ÀÛ¼ºÀÚ: %s\n ÀÛ¼ºÀÏ½Ã: %s\n", 
+				System.out.printf("\nê²Œì‹œê¸€ë²ˆí˜¸: %d\n ì œëª©: %s\n ì‘ì„±ì: %s\n ì‘ì„±ì¼ì‹œ: %s\n", 
     					b.getBoardCode(), b.getTitle(), b.getId_writer(), b.getWriteDate().toString());
-				System.out.printf("³»¿ë: \n%s\n", b.getContents());
+				System.out.printf("ë‚´ìš©: \n%s\n", b.getContents());
     		}
     	}
 		System.out.println("***************************************");
