@@ -86,7 +86,7 @@ public class Demo {
                 String userstate = tokens.nextToken(" ");
                 int tranCnt = Integer.parseInt(tokens.nextToken(" "));
 
-                if(userstate.equals("°ø±ŞÀÚ")) {
+                if(userstate.equals("ê³µê¸‰ì")) {
                     Supplier sp = new Supplier(name,id,password,contact,occupation,preferredarea,pushagreement,averagescore,userstate,tranCnt);
                     //  suppliers.add(sp);
                     members.add(sp);
@@ -182,12 +182,12 @@ public class Demo {
 
 
         while(true) {
-            System.out.println("¸Ş´º¸¦ ¼±ÅÃÇØÁÖ¼¼¿ä.");
-            System.out.println("0. °ü¸®ÀÚ ¸ğµå");
-            System.out.println("1. ·Î±×ÀÎ");
-            System.out.println("2. È¸¿ø °¡ÀÔ");
-            System.out.println("3. Á¾·á");
-            System.out.print("¹øÈ£ÀÔ·Â> ");
+            System.out.println("ë©”ë‰´ë¥¼ ì„ íƒí•´ì£¼ì„¸ìš”.");
+            System.out.println("0. ê´€ë¦¬ì ëª¨ë“œ");
+            System.out.println("1. ë¡œê·¸ì¸");
+            System.out.println("2. íšŒì› ê°€ì…");
+            System.out.println("3. ì¢…ë£Œ");
+            System.out.print("ë²ˆí˜¸ì…ë ¥> ");
             int i = sc.nextInt();
             switch (i) {
                 case 0:
@@ -195,7 +195,7 @@ public class Demo {
                     break;
                 case 1:
                     user = Login();
-                    if (user.getUserState().equals("°ø±ŞÀÚ"))
+                    if (user.getUserState().equals("ê³µê¸‰ì"))
                         Provider_Menu();
                     else
                         Consumer_Menu();
@@ -216,12 +216,12 @@ public class Demo {
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("¼ÒºñÀÚ ¸Ş´º È­¸é");
-        System.out.println("¸Ş´º¸¦ ¼±ÅÃÇØÁÖ¼¼¿ä.");
-        System.out.println("1. ¹æ °Ë»öÇÏ±â");
-        System.out.println("2. ¸¶ÀÌÆäÀÌÁö °ü¸®ÇÏ±â");
-        System.out.println("3. °í°´ÀÇ ¼Ò¸® ÀÌ¿ëÇÏ±â");
-        System.out.println("4. Á¾·áÇÏ±â");
+        System.out.println("ì†Œë¹„ì ë©”ë‰´ í™”ë©´");
+        System.out.println("ë©”ë‰´ë¥¼ ì„ íƒí•´ì£¼ì„¸ìš”.");
+        System.out.println("1. ë°© ê²€ìƒ‰í•˜ê¸°");
+        System.out.println("2. ë§ˆì´í˜ì´ì§€ ê´€ë¦¬í•˜ê¸°");
+        System.out.println("3. ê³ ê°ì˜ ì†Œë¦¬ ì´ìš©í•˜ê¸°");
+        System.out.println("4. ì¢…ë£Œí•˜ê¸°");
 
         int i = sc.nextInt();
 
@@ -231,10 +231,10 @@ public class Demo {
             case 1 :
                 break;
             case 2 :
-                enterConsumerPage();   //¸¶ÀÌÆäÀÌÁö Á¢¼Ó
+                enterConsumerPage();   //ë§ˆì´í˜ì´ì§€ ì ‘ì†
                 break;
             case 3 :
-                enterBoard();   //°Ô½ÃÆÇ Á¢¼Ó
+                enterBoard();   //ê²Œì‹œíŒ ì ‘ì†
                 break;
             case 4 :
                 sc.close();
@@ -252,13 +252,13 @@ public class Demo {
         Scanner sc = new Scanner(System.in);
 
         while(true) {
-            System.out.println("°ø±ŞÀÚ ¸Ş´º È­¸é");
-            System.out.println("¸Ş´º¸¦ ¼±ÅÃÇØÁÖ¼¼¿ä.");
-            System.out.println("0. ¹æ µî·ÏÇÏ±â");
-            System.out.println("1. ¹æ °Ë»öÇÏ±â");
-            System.out.println("2. ¸¶ÀÌÆäÀÌÁö °ü¸®ÇÏ±â");
-            System.out.println("3. °í°´ÀÇ ¼Ò¸® ÀÌ¿ëÇÏ±â");
-            System.out.println("4. Á¾·áÇÏ±â");
+            System.out.println("ê³µê¸‰ì ë©”ë‰´ í™”ë©´");
+            System.out.println("ë©”ë‰´ë¥¼ ì„ íƒí•´ì£¼ì„¸ìš”.");
+            System.out.println("0. ë°© ë“±ë¡í•˜ê¸°");
+            System.out.println("1. ë°© ê²€ìƒ‰í•˜ê¸°");
+            System.out.println("2. ë§ˆì´í˜ì´ì§€ ê´€ë¦¬í•˜ê¸°");
+            System.out.println("3. ê³ ê°ì˜ ì†Œë¦¬ ì´ìš©í•˜ê¸°");
+            System.out.println("4. ì¢…ë£Œí•˜ê¸°");
 
             int i = sc.nextInt();
 
@@ -288,16 +288,16 @@ public class Demo {
     public void enterBoard(){
         
         System.out.println("*************");
-        System.out.println("1. °Ô½Ã±Û ÀÛ¼º");
-        System.out.println("2. °Ô½Ã±Û Á¶È¸");
+        System.out.println("1. ê²Œì‹œê¸€ ì‘ì„±");
+        System.out.println("2. ê²Œì‹œê¸€ ì¡°íšŒ");
         System.out.println("*************");
 
         Scanner keyboard = new Scanner(System.in);
-        System.out.print("¹øÈ£ ÀÔ·Â> ");
+        System.out.print("ë²ˆí˜¸ ì…ë ¥> ");
         int option = keyboard.nextInt();
         if(option == 1){
-            System.out.println("1. ½Å°í   2. ¹®ÀÇ   3. °ÇÀÇ");
-            System.out.print("¹øÈ£ÀÔ·Â> ");
+            System.out.println("1. ì‹ ê³    2. ë¬¸ì˜   3. ê±´ì˜");
+            System.out.print("ë²ˆí˜¸ì…ë ¥> ");
            option = keyboard.nextInt();
            switch(option){
            case 1:
@@ -315,15 +315,15 @@ public class Demo {
            }
         }
         else if(option == 2){
-           //°Ô½Ã±Û Á¶È¸
+           //ê²Œì‹œê¸€ ì¡°íšŒ
            
-           //¼øÈ¸ÇÏ¸é¾î ±Û¹øÈ£¶û Á¦¸ñÀ» ÀüºÎ Âï´Â´Ù.
+           //ìˆœíšŒí•˜ë©´ì–´ ê¸€ë²ˆí˜¸ë‘ ì œëª©ì„ ì „ë¶€ ì°ëŠ”ë‹¤.
            for(int i = 0; i < boardList.size(); i++ ){
               Board b = boardList.get(i);
               System.out.printf("%d %s %s %s\n", 
                     b.getBoardCode(), b.getTitle(), b.getId_writer(), b.getWriteDate().toString());
               
-              //È¤½Ã toString¾ÈµÇ¸é
+              //í˜¹ì‹œ toStringì•ˆë˜ë©´
               /*
                * DateFormat sdFormat = new SimpleDateFormat("yyyyMMdd");
                * Date nowDate = new Date();
@@ -333,20 +333,20 @@ public class Demo {
            }
            
           
-          System.out.print("Á¶È¸ÇÒ ¹øÈ£ÀÔ·Â> ");
+          System.out.print("ì¡°íšŒí•  ë²ˆí˜¸ì…ë ¥> ");
           int code = keyboard.nextInt();
           
            for(int i = 0; i < boardList.size(); i++ ){
               Board b = boardList.get(i);
               if(b.getBoardCode() == code){
                   if(b.isGoPublic()==false && b.getId_writer()!=user.getId()){
-                	  System.out.println("ºñ°ø°³ °Ô½Ã±ÛÀÔ´Ï´Ù.");
+                	  System.out.println("ë¹„ê³µê°œ ê²Œì‹œê¸€ì…ë‹ˆë‹¤.");
                 	  break;
                   }
                  System.out.println("***************************************");
-                 System.out.printf("°Ô½Ã±Û¹øÈ£: %d\n Á¦¸ñ: %s\n ÀÛ¼ºÀÚ: %s\n ÀÛ¼ºÀÏ½Ã: %s\n", 
+                 System.out.printf("ê²Œì‹œê¸€ë²ˆí˜¸: %d\n ì œëª©: %s\n ì‘ì„±ì: %s\n ì‘ì„±ì¼ì‹œ: %s\n", 
                         b.getBoardCode(), b.getTitle(), b.getId_writer(), b.getWriteDate().toString());
-                 System.out.printf("³»¿ë: \n%s\n", b.getContents());
+                 System.out.printf("ë‚´ìš©: \n%s\n", b.getContents());
                  System.out.println("***************************************");
                  
                  break;
@@ -355,7 +355,7 @@ public class Demo {
            }
         }
         else{
-           System.out.println("Àß¸øµÈ ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼Ì½À´Ï´Ù.");
+           System.out.println("ì˜ëª»ëœ ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì…¨ìŠµë‹ˆë‹¤.");
         }
         
      }
@@ -367,13 +367,13 @@ public class Demo {
         String id;
         String password;
 
-        System.out.println("¹æ ÀÖ¾î¿ä!\n·Î±×ÀÎ");
+        System.out.println("ë°© ìˆì–´ìš”!\në¡œê·¸ì¸");
         do {
 
             flag = false;
-            System.out.print("¾ÆÀÌµğ : ");
+            System.out.print("ì•„ì´ë”” : ");
             id = sc.nextLine();
-            System.out.print("ºñ¹Ğ¹øÈ£ : ");
+            System.out.print("ë¹„ë°€ë²ˆí˜¸ : ");
             password = sc.nextLine();
 
             for(int i =0; i<members.size();i++)
@@ -383,8 +383,8 @@ public class Demo {
                     if(password.equals(members.get(i).getPassword()))
                     {
                         flag = true;
-                        System.out.println("Á¢¼ÓµÇ¾ú½À´Ï´Ù.");
-                        if(members.get(i).getUserState().equals("°ø±ŞÀÚ")) {
+                        System.out.println("ì ‘ì†ë˜ì—ˆìŠµë‹ˆë‹¤.");
+                        if(members.get(i).getUserState().equals("ê³µê¸‰ì")) {
                             supplier = new Supplier(members.get(i));
                             return supplier;
                         } else {
@@ -393,8 +393,8 @@ public class Demo {
                         }
                     }
                     else {
-                        System.out.println("ºñ¹Ğ¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù!");
-                        System.out.println("ºñ¹Ğ ¹øÈ£¿Í ¾ÆÀÌµğ¸¦ ´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä!");
+                        System.out.println("ë¹„ë°€ë²ˆí˜¸ê°€ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤!");
+                        System.out.println("ë¹„ë°€ ë²ˆí˜¸ì™€ ì•„ì´ë””ë¥¼ ë‹¤ì‹œ ì…ë ¥í•´ì£¼ì„¸ìš”!");
                         break;
                     }
                 }
@@ -414,12 +414,12 @@ public class Demo {
         String id;
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("¹æ ÀÖ¾î¿ä!\n È¸¿ø°¡ÀÔ");
-        System.out.print("½Ç¸í : ");
+        System.out.println("ë°© ìˆì–´ìš”!\n íšŒì›ê°€ì…");
+        System.out.print("ì‹¤ëª… : ");
         String name = sc.nextLine();
 
         do {
-            System.out.print("¾ÆÀÌµğ : ");
+            System.out.print("ì•„ì´ë”” : ");
             id = sc.nextLine();
 
             flag=true;
@@ -427,32 +427,32 @@ public class Demo {
             for(int i=0;i<members.size();i++)
             {
                 if(id.equals(members.get(i).getId())) {
-                    System.out.println("¾ÆÀÌµğ Áßº¹. ´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä!");
+                    System.out.println("ì•„ì´ë”” ì¤‘ë³µ. ë‹¤ì‹œ ì…ë ¥í•´ì£¼ì„¸ìš”!");
                     flag = false;
                     break;
                 }
             }
 
         } while(!flag);
-        System.out.println("Áßº¹µÈ ¾ÆÀÌµğ°¡ ¾ø½À´Ï´Ù. Á¤»ó µî·ÏµÇ¾ú½À´Ï´Ù.");
-        System.out.print("ºñ¹Ğ¹øÈ£ : ");
+        System.out.println("ì¤‘ë³µëœ ì•„ì´ë””ê°€ ì—†ìŠµë‹ˆë‹¤. ì •ìƒ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤.");
+        System.out.print("ë¹„ë°€ë²ˆí˜¸ : ");
         String password = sc.nextLine();
         do {
-            System.out.print("ºñ¹Ğ¹øÈ£ ÀçÈ®ÀÎ : ");
+            System.out.print("ë¹„ë°€ë²ˆí˜¸ ì¬í™•ì¸ : ");
             pw_check = sc.nextLine();
             if(password.equals(pw_check))
-                System.out.println("ºñ¹Ğ¹øÈ£°¡ ÀÏÄ¡ÇÕ´Ï´Ù");
+                System.out.println("ë¹„ë°€ë²ˆí˜¸ê°€ ì¼ì¹˜í•©ë‹ˆë‹¤");
             else
-                System.out.println("ºñ¹Ğ¹øÈ£°¡ ´Ù¸¨´Ï´Ù. ´Ù½Ã ÀÔ·ÂºÎÅ¹µå¸³´Ï´Ù.");
+                System.out.println("ë¹„ë°€ë²ˆí˜¸ê°€ ë‹¤ë¦…ë‹ˆë‹¤. ë‹¤ì‹œ ì…ë ¥ë¶€íƒë“œë¦½ë‹ˆë‹¤.");
         } while(!password.equals(pw_check));
-        System.out.print("ÈŞ´ëÀüÈ­¹øÈ£ : ");
+        System.out.print("íœ´ëŒ€ì „í™”ë²ˆí˜¸ : ");
         String contact = sc.nextLine();
-        System.out.println("Á÷¾÷\n 1. ÇĞ»ı 2. Á÷ÀåÀÎ 3. ±âÅ¸");
+        System.out.println("ì§ì—…\n 1. í•™ìƒ 2. ì§ì¥ì¸ 3. ê¸°íƒ€");
         int occupation = sc.nextInt();
         sc.nextLine();
-        System.out.println("¼±È£Áö¿ª ¼±ÅÃ (ºÏ¹® / µ¿¹® / ¼­¹® / Á¤¹® / ¼ö¿µÀå¹® / Å×Å©³ë¹® / ³óÀå¹® / ¼Ö·Î¹® / Á¶Àº¹® / ÂÊ¹®)");
+        System.out.println("ì„ í˜¸ì§€ì—­ ì„ íƒ (ë¶ë¬¸ / ë™ë¬¸ / ì„œë¬¸ / ì •ë¬¸ / ìˆ˜ì˜ì¥ë¬¸ / í…Œí¬ë…¸ë¬¸ / ë†ì¥ë¬¸ / ì†”ë¡œë¬¸ / ì¡°ì€ë¬¸ / ìª½ë¬¸)");
         String preferredarea = sc.nextLine();
-        System.out.println("Çª½¬ ¾Ë¸² µ¿ÀÇ? (O/X)");
+        System.out.println("í‘¸ì‰¬ ì•Œë¦¼ ë™ì˜? (O/X)");
         String check = sc.nextLine();
         Boolean pushagreement;
         if(check.equals("O"))
@@ -460,11 +460,11 @@ public class Demo {
         else
             pushagreement = false;
         double averagescore = 5.0;
-        System.out.print("¼±ÅÃ : °ø±ŞÀÚ/¼ö¿äÀÚ ");
+        System.out.print("ì„ íƒ : ê³µê¸‰ì/ìˆ˜ìš”ì ");
         //sc.nextLine();
         String userstate = sc.nextLine();
 
-        if(userstate.equals("°ø±ŞÀÚ")) {
+        if(userstate.equals("ê³µê¸‰ì")) {
             Supplier sp = new Supplier(name,id,password,contact,occupation,preferredarea,pushagreement,averagescore,userstate, 0);
             members.add(sp);
         } else {
@@ -477,13 +477,13 @@ public class Demo {
     public void enterConsumerPage(){
     	
     	System.out.println("*****************");
-        System.out.println("¼ö¿äÀÚ ¸¶ÀÌÆäÀÌÁö");
-        System.out.println("¿É¼ÇÀ» ¼±ÅÃÇØÁÖ¼¼¿ä.");
-        System.out.println("0. Á¤º¸¼öÁ¤");
-        System.out.println("1. °ü½É¹æ º¸±â");
-        System.out.println("2. Å»Åğ");
-        System.out.println("3. °Å·¡³»¿ª");
-        System.out.println("4. ³» °Ô½Ã±Û °ü¸®");
+        System.out.println("ìˆ˜ìš”ì ë§ˆì´í˜ì´ì§€");
+        System.out.println("ì˜µì…˜ì„ ì„ íƒí•´ì£¼ì„¸ìš”.");
+        System.out.println("0. ì •ë³´ìˆ˜ì •");
+        System.out.println("1. ê´€ì‹¬ë°© ë³´ê¸°");
+        System.out.println("2. íƒˆí‡´");
+        System.out.println("3. ê±°ë˜ë‚´ì—­");
+        System.out.println("4. ë‚´ ê²Œì‹œê¸€ ê´€ë¦¬");
     	System.out.println("*****************");
     	
     	Scanner keyboard = new Scanner(System.in);
@@ -502,7 +502,7 @@ public class Demo {
     		
     		break;
     	case 4:
-    		//³»°¡ ¾´ °Ô½Ã±Û º¸±â
+    		//ë‚´ê°€ ì“´ ê²Œì‹œê¸€ ë³´ê¸°
     		manageMyBoard();
     		break;
     	default: 
@@ -515,13 +515,13 @@ public class Demo {
     public void enterSupplierPage(){
 
     	System.out.println("*****************");
-        System.out.println("°ø±ŞÀÚ ¸¶ÀÌÆäÀÌÁö");
-        System.out.println("¿É¼ÇÀ» ¼±ÅÃÇØÁÖ¼¼¿ä.");
-        System.out.println("0. Á¤º¸¼öÁ¤");
-        System.out.println("1. ¹æ µî·Ï");
-        System.out.println("2. ³ªÀÇ ¹æ ¸ñ·Ï");
-        System.out.println("3. °Å·¡ ³»¿ª");
-        System.out.println("4. ³» °Ô½Ã±Û °ü¸®");
+        System.out.println("ê³µê¸‰ì ë§ˆì´í˜ì´ì§€");
+        System.out.println("ì˜µì…˜ì„ ì„ íƒí•´ì£¼ì„¸ìš”.");
+        System.out.println("0. ì •ë³´ìˆ˜ì •");
+        System.out.println("1. ë°© ë“±ë¡");
+        System.out.println("2. ë‚˜ì˜ ë°© ëª©ë¡");
+        System.out.println("3. ê±°ë˜ ë‚´ì—­");
+        System.out.println("4. ë‚´ ê²Œì‹œê¸€ ê´€ë¦¬");
     	System.out.println("*****************");
     	
     	Scanner keyboard = new Scanner(System.in);
@@ -540,7 +540,7 @@ public class Demo {
     		
     		break;
     	case 4:
-    		//³»°¡ ¾´ °Ô½Ã±Û º¸±â
+    		//ë‚´ê°€ ì“´ ê²Œì‹œê¸€ ë³´ê¸°
     		manageMyBoard();
     		break;
     	default: 
@@ -548,11 +548,11 @@ public class Demo {
     	}
     }
     
-    public void manageMyBoard(){//³»°¡ ÀÛ¼ºÇÑ °Ô½Ã±Û º¸±â
+    public void manageMyBoard(){//ë‚´ê°€ ì‘ì„±í•œ ê²Œì‹œê¸€ ë³´ê¸°
     	System.out.println("*********************");
-    	System.out.println("0. °Ô½Ã±Û Á¶È¸");
-    	System.out.println("1. °Ô½Ã±Û ¼öÁ¤");
-    	System.out.println("2. °Ô½Ã±Û »èÁ¦");
+    	System.out.println("0. ê²Œì‹œê¸€ ì¡°íšŒ");
+    	System.out.println("1. ê²Œì‹œê¸€ ìˆ˜ì •");
+    	System.out.println("2. ê²Œì‹œê¸€ ì‚­ì œ");
     	System.out.println("*********************");
     	
     	Scanner keyboard = new Scanner(System.in);
@@ -568,7 +568,7 @@ public class Demo {
     		user.deleteMyBoard();
     		break;
   		default:
-    			System.out.println("Àß¸ø´©¸£¼Ì½À´Ï´Ù.");
+    			System.out.println("ì˜ëª»ëˆ„ë¥´ì…¨ìŠµë‹ˆë‹¤.");
     			break;
     	}
     }
@@ -576,37 +576,37 @@ public class Demo {
     public void selectEditOpt(){
 
         System.out.println("********************");
-        System.out.println("0. ºñ¹Ğ¹øÈ£");
-        System.out.println("1. ¿¬¶ôÃ³");
-        System.out.println("2. Á÷¾÷");
-        System.out.println("3. °ü½ÉÀ§Ä¡");
-        System.out.println("4. ¾Ë¸²¼ö½Åµ¿ÀÇ¿©ºÎ");
+        System.out.println("0. ë¹„ë°€ë²ˆí˜¸");
+        System.out.println("1. ì—°ë½ì²˜");
+        System.out.println("2. ì§ì—…");
+        System.out.println("3. ê´€ì‹¬ìœ„ì¹˜");
+        System.out.println("4. ì•Œë¦¼ìˆ˜ì‹ ë™ì˜ì—¬ë¶€");
         System.out.println("********************");
 
         Scanner keyboard = new Scanner(System.in);
-        System.out.print("¿É¼ÇÀÔ·Â> ");
+        System.out.print("ì˜µì…˜ì…ë ¥> ");
         int option = keyboard.nextInt();
         keyboard.nextLine();
         switch(option){
             case 0:
-                System.out.print("»õ ºñ¹Ğ¹øÈ£> ");
+                System.out.print("ìƒˆ ë¹„ë°€ë²ˆí˜¸> ");
                 String passwd = keyboard.nextLine();
                 user.editPasswd(passwd);
                 break;
             case 1:
-                System.out.print("»õ ¿¬¶ôÃ³> ");
+                System.out.print("ìƒˆ ì—°ë½ì²˜> ");
                 String contact = keyboard.nextLine();
                 user.editContact(contact);
                 break;
             case 2:
-                System.out.println("\n1. ÇĞ»ı 2. Á÷ÀåÀÎ 3. ±âÅ¸");
-                System.out.println("¹øÈ£ÀÔ·Â> ");
+                System.out.println("\n1. í•™ìƒ 2. ì§ì¥ì¸ 3. ê¸°íƒ€");
+                System.out.println("ë²ˆí˜¸ì…ë ¥> ");
                 int job = keyboard.nextInt();
                 user.editOccupation(job);
                 break;
             case 3:
-                System.out.println("¼±È£Áö¿ª ¼±ÅÃ (ºÏ¹® / µ¿¹® / ¼­¹® / Á¤¹® / ¼ö¿µÀå¹® / Å×Å©³ë¹® / ³óÀå¹® / ¼Ö·Î¹® / Á¶Àº¹® / ÂÊ¹®)");
-                System.out.println("Áö¿ª ÀÔ·Â> ");
+                System.out.println("ì„ í˜¸ì§€ì—­ ì„ íƒ (ë¶ë¬¸ / ë™ë¬¸ / ì„œë¬¸ / ì •ë¬¸ / ìˆ˜ì˜ì¥ë¬¸ / í…Œí¬ë…¸ë¬¸ / ë†ì¥ë¬¸ / ì†”ë¡œë¬¸ / ì¡°ì€ë¬¸ / ìª½ë¬¸)");
+                System.out.println("ì§€ì—­ ì…ë ¥> ");
                 String PreferredArea = keyboard.nextLine();
                 user.editPreferredArea(PreferredArea);
                 break;
@@ -616,7 +616,7 @@ public class Demo {
                 user.editPushAgreement(pAgreement);
                 break;
             default:
-                System.out.println("Àß¸ø ´©¸£¼Ì½À´Ï´Ù");
+                System.out.println("ì˜ëª» ëˆ„ë¥´ì…¨ìŠµë‹ˆë‹¤");
                 break;
         }
     }
