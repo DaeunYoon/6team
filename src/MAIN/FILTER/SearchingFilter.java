@@ -63,7 +63,7 @@ public class SearchingFilter {
         }
 
         if(filter_room.size() == 0)
-            System.out.println("ÇØ´çµÇ´Â ¹æÀÌ ¾ø½À´Ï´Ù");
+            System.out.println("í•´ë‹¹ë˜ëŠ” ë°©ì´ ì—†ìŠµë‹ˆë‹¤");
         else{
             for(Room for_room : filter_room){
                 String output =
@@ -83,46 +83,46 @@ public class SearchingFilter {
         filter_list = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("°Ë»öÇÏ°í ½ÍÀº ÇÊÅÍ¸¦ ¼³Á¤ÇØÁÖ¼¼¿ä.");
-        System.out.println("¼±È£Áö¿ªÀ» ¼±ÅÃÇÏ½Ã°Ú½À´Ï±î? (O/X)");
+        System.out.println("ê²€ìƒ‰í•˜ê³  ì‹¶ì€ í•„í„°ë¥¼ ì„¤ì •í•´ì£¼ì„¸ìš”.");
+        System.out.println("ì„ í˜¸ì§€ì—­ì„ ì„ íƒí•˜ì‹œê² ìŠµë‹ˆê¹Œ? (O/X)");
 
         String select = sc.nextLine();
 
         if(select.equals("O")) {
             filter_list.add(select);
-            System.out.println("¼±È£Áö¿ª ¼±ÅÃ (ºÏ¹® / µ¿¹® / ¼­¹® / Á¤¹® / ¼ö¿µÀå¹® / Å×Å©³ë¹® / ³óÀå¹® / ¼Ö·Î¹® / Á¶Àº¹® / ÂÊ¹®)");
+            System.out.println("ì„ í˜¸ì§€ì—­ ì„ íƒ (ë¶ë¬¸ / ë™ë¬¸ / ì„œë¬¸ / ì •ë¬¸ / ìˆ˜ì˜ì¥ë¬¸ / í…Œí¬ë…¸ë¬¸ / ë†ì¥ë¬¸ / ì†”ë¡œë¬¸ / ì¡°ì€ë¬¸ / ìª½ë¬¸)");
             select_filter.setLocation(sc.nextLine());
         } else {
             filter_list.add(select);
-            System.out.println("¼±È£Áö¿ªÀ» ¼±ÅÃÇÏÁö ¾ÊÀ¸¼Ì½À´Ï´Ù.");
+            System.out.println("ì„ í˜¸ì§€ì—­ì„ ì„ íƒí•˜ì§€ ì•Šìœ¼ì…¨ìŠµë‹ˆë‹¤.");
         }
 
-        System.out.println("¹æ °¡°İÀ» ¼±ÅÃÇÏ½Ã°Ú½À´Ï±î? (O/X)");
+        System.out.println("ë°© ê°€ê²©ì„ ì„ íƒí•˜ì‹œê² ìŠµë‹ˆê¹Œ? (O/X)");
         select = sc.nextLine();
         if(select.equals("O")) {
             filter_list.add(select);
-            System.out.println("°Ë»öÇÏ°í ½ÍÀº ÃÖ°í ¿ù¼¼¸¦ ¼³Á¤ÇÏ¼¼¿ä.");
+            System.out.println("ê²€ìƒ‰í•˜ê³  ì‹¶ì€ ìµœê³  ì›”ì„¸ë¥¼ ì„¤ì •í•˜ì„¸ìš”.");
             select_filter.setUpperPrice(sc.nextInt());
-            System.out.println("°Ë»öÇÏ°í ½ÍÀº ÃÖÀú ¿ù¼¼¸¦ ¼³Á¤ÇÏ¼¼¿ä.");
+            System.out.println("ê²€ìƒ‰í•˜ê³  ì‹¶ì€ ìµœì € ì›”ì„¸ë¥¼ ì„¤ì •í•˜ì„¸ìš”.");
             select_filter.setLowerPrice(sc.nextInt());
             sc.nextLine();
         } else {
             filter_list.add(select);
-            System.out.println("¹æ °¡°İÀ» ¼±ÅÃÇÏÁö ¾ÊÀ¸¼Ì½À´Ï´Ù.");
+            System.out.println("ë°© ê°€ê²©ì„ ì„ íƒí•˜ì§€ ì•Šìœ¼ì…¨ìŠµë‹ˆë‹¤.");
         }
 
-        System.out.println("¹æ ±¸Á¶¸¦ ¼±ÅÃÇÏ½Ã°Ú½À´Ï±î? (O/X)");
+        System.out.println("ë°© êµ¬ì¡°ë¥¼ ì„ íƒí•˜ì‹œê² ìŠµë‹ˆê¹Œ? (O/X)");
         select = sc.nextLine();
         if(select.equals("O")) {
             filter_list.add(select);
-            System.out.println("°Ë»öÇÏ°í ½ÍÀº ¹æ ±¸Á¶¸¦ ¼³Á¤ÇÏ¼¼¿ä. ¼±ÅÃ : (¿ø·ë/Åõ·ë)");
+            System.out.println("ê²€ìƒ‰í•˜ê³  ì‹¶ì€ ë°© êµ¬ì¡°ë¥¼ ì„¤ì •í•˜ì„¸ìš”. ì„ íƒ : (ì›ë£¸/íˆ¬ë£¸)");
             select_filter.setRoomStructure(sc.nextLine());
         } else {
             filter_list.add(select);
-            System.out.println("¹æ ±¸Á¶¸¦ ¼±ÅÃÇÏÁö ¾ÊÀ¸¼Ì½À´Ï´Ù.");
+            System.out.println("ë°© êµ¬ì¡°ë¥¼ ì„ íƒí•˜ì§€ ì•Šìœ¼ì…¨ìŠµë‹ˆë‹¤.");
         }
 
-        System.out.println("°Å·¡ ¿Ï·áµÈ ¹æµµ º¸½Ã°Ú½À´Ï±î? (O/X)");
+        System.out.println("ê±°ë˜ ì™„ë£Œëœ ë°©ë„ ë³´ì‹œê² ìŠµë‹ˆê¹Œ? (O/X)");
         select = sc.nextLine();
         if(select.equals("O")) {
             filter_list.add(select);
@@ -130,7 +130,7 @@ public class SearchingFilter {
         } else {
             filter_list.add(select);
             select_filter.setCompleteState(false);
-            System.out.println("°Å·¡ ¿Ï·áµÈ ¹æ º¸±â¸¦ ¼±ÅÃÇÏÁö ¾ÊÀ¸¼Ì½À´Ï´Ù.");
+            System.out.println("ê±°ë˜ ì™„ë£Œëœ ë°© ë³´ê¸°ë¥¼ ì„ íƒí•˜ì§€ ì•Šìœ¼ì…¨ìŠµë‹ˆë‹¤.");
         }
 
         return select_filter;
