@@ -28,7 +28,7 @@ public class Board {
     	setWriteDate(null);
     	setContents("");
     	setGoPublic(true);
-    	setHead("¹®ÀÇ");
+    	setHead("ë¬¸ì˜");
     	
     	answer = null;
     }
@@ -38,13 +38,13 @@ public class Board {
     	
     	Scanner keyboard = new Scanner(System.in);
 
-		System.out.print("Á¦¸ñ: ");
+		System.out.print("ì œëª©: ");
 		setTitle(keyboard.nextLine());
 		
-		System.out.println("³»¿ëÀÔ·Â(Enter»ç¿ë±İÁö):");
+		System.out.println("ë‚´ìš©ì…ë ¥(Enterì‚¬ìš©ê¸ˆì§€):");
 		setContents(keyboard.nextLine());
     	
-		System.out.print("°ø°³¿©ºÎ¼³Á¤(O/X) : ");
+		System.out.print("ê³µê°œì—¬ë¶€ì„¤ì •(O/X) : ");
 		String P = keyboard.nextLine();
 		if(P.equals("X"))
 			setGoPublic(false);
@@ -53,7 +53,7 @@ public class Board {
     	
     }
     
-    //´äº¯ Ã£¾Æ¼­ Ãâ·Â
+    //ë‹µë³€ ì°¾ì•„ì„œ ì¶œë ¥
     public void lookForAnswer() throws IOException
     {
         int code, ocode;
@@ -72,24 +72,24 @@ public class Board {
             System.exit(0);
         }
 
-        System.out.println("´ä±ÛÀ» º¸°í½ÍÀº °Ô½Ã±Û ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä > ");
-        ocode = in.nextInt(); //Ã£´Â °Ô½Ã±Û ¹øÈ£
+        System.out.println("ë‹µê¸€ì„ ë³´ê³ ì‹¶ì€ ê²Œì‹œê¸€ ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš” > ");
+        ocode = in.nextInt(); //ì°¾ëŠ” ê²Œì‹œê¸€ ë²ˆí˜¸
 
         while(Afile.hasNext())
         {
-            code = Afile.nextInt(); //°Ô½Ã±Û¹øÈ£ ³¯Â¥ ´äº¯ ¼øÀ¸·Î ÆÄÀÏ¿¡ ÀúÀåµÊ
+            code = Afile.nextInt(); //ê²Œì‹œê¸€ë²ˆí˜¸ ë‚ ì§œ ë‹µë³€ ìˆœìœ¼ë¡œ íŒŒì¼ì— ì €ì¥ë¨
             if(code == ocode)
             {
-                System.out.println("°Ô½Ã±Û ¹øÈ£	: " + code);
-                System.out.println("°Ô½Ã ³¯Â¥	: " + Afile.nextLine());
-                System.out.println("´äº¯");
+                System.out.println("ê²Œì‹œê¸€ ë²ˆí˜¸	: " + code);
+                System.out.println("ê²Œì‹œ ë‚ ì§œ	: " + Afile.nextLine());
+                System.out.println("ë‹µë³€");
                 System.out.println(Afile.nextLine());
                 return;
             }
             temp = Afile.nextLine();
             temp = Afile.nextLine();
         }
-        System.out.println("ÇØ´ç °Ô½Ã±Û¿¡ ´äº¯ÀÌ ¾ø½À´Ï´Ù");
+        System.out.println("í•´ë‹¹ ê²Œì‹œê¸€ì— ë‹µë³€ì´ ì—†ìŠµë‹ˆë‹¤");
 
         return;
 
