@@ -15,11 +15,11 @@ public class HouseHolder {
 
         String answer;
         System.out.println("************************************");
-        System.out.println("¹æÀÌ '4¹æ8¹æ ¹æ±¸ÇÏ±â' ½Ã½ºÅÛ¿¡ µî·ÏµÇ¾ú½À´Ï´Ù");
-        System.out.println("µî·ÏÀ» Çã°¡ ÇÏ½Ã°Ú½À´Ï±î (¼ö¶ô/°ÅÀı) ?");
+        System.out.println("ë°©ì´ '4ë°©8ë°© ë°©êµ¬í•˜ê¸°' ì‹œìŠ¤í…œì— ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤");
+        System.out.println("ë“±ë¡ì„ í—ˆê°€ í•˜ì‹œê² ìŠµë‹ˆê¹Œ (ìˆ˜ë½/ê±°ì ˆ) ?");
         answer = sc.nextLine();
         System.out.println("************************************");
-        if (answer.equals("¼ö¶ô"))
+        if (answer.equals("ìˆ˜ë½"))
             return true;
         else
             return false;
