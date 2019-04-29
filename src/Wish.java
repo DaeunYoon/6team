@@ -107,15 +107,15 @@ public class Wish {
     public void print_info(){
 
            System.out.println("***************************************");
-           System.out.printf("¹æ¹øÈ£: %d\n", getroomCode());
-           System.out.printf("ÁıÁÖÀÎ ¿¬¶ôÃ³: %s\n", getcontactHome());
-           System.out.printf("°¡°İ: %d", getPrice());
-           System.out.printf("¾÷·Îµå ³¯Â¥: %s\n", getUploadeDate());
-           System.out.printf("´ë¿©½ÃÀÛÀÏ: %s\n", getStartDate());
-           System.out.printf("´ë¿©Á¾·áÀÏ: %s\n", getTerminateDate());
-           System.out.printf("À§Ä¡: %s\n", getLocation());
-           System.out.printf("¿É¼Ç: %s\n", getOption());
-           System.out.printf("¹æ±¸Á¶: %s\n", getRoomStructure());
+           System.out.printf("ë°©ë²ˆí˜¸: %d\n", getroomCode());
+           System.out.printf("ì§‘ì£¼ì¸ ì—°ë½ì²˜: %s\n", getcontactHome());
+           System.out.printf("ê°€ê²©: %d", getPrice());
+           System.out.printf("ì—…ë¡œë“œ ë‚ ì§œ: %s\n", getUploadeDate());
+           System.out.printf("ëŒ€ì—¬ì‹œì‘ì¼: %s\n", getStartDate());
+           System.out.printf("ëŒ€ì—¬ì¢…ë£Œì¼: %s\n", getTerminateDate());
+           System.out.printf("ìœ„ì¹˜: %s\n", getLocation());
+           System.out.printf("ì˜µì…˜: %s\n", getOption());
+           System.out.printf("ë°©êµ¬ì¡°: %s\n", getRoomStructure());
            System.out.println("***************************************");
 
         }
