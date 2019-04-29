@@ -47,7 +47,7 @@ public class Suggestion extends Board{
         bufferedWriter.write(s.goPublic + "\n");
         bufferedWriter.write(s.head + "\n");
 		/*
-		 °Ô½Ã±Û ¹øÈ£ / Á¦¸ñ / id / ³¯Â¥ / ³»¿ë / °ø°³¿©ºÎ / ¸»¸Ó¸®
+		 ê²Œì‹œê¸€ ë²ˆí˜¸ / ì œëª© / id / ë‚ ì§œ / ë‚´ìš© / ê³µê°œì—¬ë¶€ / ë§ë¨¸ë¦¬
 		 */
     }
 }
