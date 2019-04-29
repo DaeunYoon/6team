@@ -39,22 +39,22 @@ public class Supplier extends User {
         long Date;
         temp_room = demo.getRooms();
 
-        System.out.println("¹æÁ¤º¸¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä");
+        System.out.println("ë°©ì •ë³´ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”");
 
-        System.out.print("ÁıÁÖÀÎ ¿¬¶ôÃ³ : ");
+        System.out.print("ì§‘ì£¼ì¸ ì—°ë½ì²˜ : ");
         contactHome = sc.nextLine();
-        System.out.print("ÇÏ·ç ±âÁØ °¡°İ : ");
+        System.out.print("í•˜ë£¨ ê¸°ì¤€ ê°€ê²© : ");
         price = sc.nextInt();
         sc.nextLine();
-        System.out.print("´ë¿© °¡´É ½ÃÀÛÀÏ : ");
+        System.out.print("ëŒ€ì—¬ ê°€ëŠ¥ ì‹œì‘ì¼ : ");
         startDate = sc.nextLine();
-        System.out.print("´Ù¿© °¡´É Á¾·áÀÏ : ");
+        System.out.print("ë‹¤ì—¬ ê°€ëŠ¥ ì¢…ë£Œì¼ : ");
         terminateDate = sc.nextLine();
-        System.out.print("À§Ä¡ : ");
+        System.out.print("ìœ„ì¹˜ : ");
         location = sc.nextLine();
-        System.out.print("¹æ ±¸Á¶ : ");
+        System.out.print("ë°© êµ¬ì¡° : ");
         roomStructure = sc.nextLine();
-        System.out.print("¹æ ¿É¼Ç : ");
+        System.out.print("ë°© ì˜µì…˜ : ");
         option = sc.nextLine();
         tState = false;
         permissionCheck = false;
@@ -63,7 +63,7 @@ public class Supplier extends User {
         Room temp = new Room(contactHome,price,uploadDate,startDate,terminateDate,location,option,tState,roomStructure,permissionCheck);
         check = temp.callPermission();
         if(check == true) {
-            System.out.println("¹æÀÌ µî·ÏµÇ¾ú½À´Ï´Ù");
+            System.out.println("ë°©ì´ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤");
             myRoom.add(temp);
             temp_room.add(temp);
             demo.setRoomcode(demo.getRoomcode()+1);
@@ -71,7 +71,7 @@ public class Supplier extends User {
             temp.recordInformation(super.getId());
         }
         else{
-            System.out.println("¹æ µî·ÏÀÌ ½ÇÆĞÇß½À´Ï´Ù");
+            System.out.println("ë°© ë“±ë¡ì´ ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤");
         }
 
 
