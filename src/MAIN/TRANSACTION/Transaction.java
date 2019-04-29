@@ -28,9 +28,9 @@ public class Transaction {
         long current = System.currentTimeMillis();
         long Finish = this.rentalFinishDate.getTime();
         if(Finish < current) {
-            System.out.println(this.supplier + "´Ô " + this.consumer + "´Ô¿¡ ´ëÇÑ ÆòÁ¡À» ¸Å°ÜÁÖ¼¼¿ä : ");
+            System.out.println(this.supplier + "ë‹˜ " + this.consumer + "ë‹˜ì— ëŒ€í•œ í‰ì ì„ ë§¤ê²¨ì£¼ì„¸ìš” : ");
             suppToConsum = sc.nextInt();
-            System.out.println(this.consumer + "´Ô " + this.supplier + "´Ô¿¡ ´ëÇÑ ÆòÁ¡À» ¸Å°ÜÁÖ¼¼¿ä : ");
+            System.out.println(this.consumer + "ë‹˜ " + this.supplier + "ë‹˜ì— ëŒ€í•œ í‰ì ì„ ë§¤ê²¨ì£¼ì„¸ìš” : ");
             consumToSupp= sc.nextInt();
             r1.updateScore(this.supplier, this.consumer, suppToConsum, this);
             r2.updateScore(this.consumer, this.supplier, consumToSupp, this);
@@ -43,9 +43,9 @@ public class Transaction {
         long current = System.currentTimeMillis();
         long Finish = this.rentalFinishDate.getTime();
         if(Finish < current) {
-            System.out.println(this.supplier + "´Ô " + this.consumer + "´Ô¿¡ ´ëÇÑ ÈÄ±â¸¦ ÀÛ¼ºÇØ ÁÖ¼¼¿ä : ");
+            System.out.println(this.supplier + "ë‹˜ " + this.consumer + "ë‹˜ì— ëŒ€í•œ í›„ê¸°ë¥¼ ìž‘ì„±í•´ ì£¼ì„¸ìš” : ");
             suppToConsum = sc.nextLine();
-            System.out.println(this.consumer + "´Ô " + this.supplier + "´Ô¿¡ ´ëÇÑ ÈÄ±â¸¦ ÀÛ¼ºÇØ ÁÖ¼¼¿ä : ");
+            System.out.println(this.consumer + "ë‹˜ " + this.supplier + "ë‹˜ì— ëŒ€í•œ í›„ê¸°ë¥¼ ìž‘ì„±í•´ ì£¼ì„¸ìš” : ");
             consumToSupp= sc.nextLine();
             r1.updateReview(this.supplier, this.consumer, suppToConsum, this);
             r2.updateReview(this.consumer, this.supplier, consumToSupp, this);
