@@ -43,7 +43,7 @@ public class Report extends Board {
 	public void writePost() {
 		super.writePost();
 		
-		super.setHead("½Å°í");
+		super.setHead("ì‹ ê³ ");
 
 		writeReport();
 	}
@@ -54,10 +54,10 @@ public class Report extends Board {
 
 		setBoardCode(getBoardCode() + 1);
 
-		System.out.println("½Å°í ´ë»óÀÇ ID¸¦ ÀÔ·ÂÇÏ¼¼¿ä > ");
+		System.out.println("ì‹ ê³  ëŒ€ìƒì˜ IDë¥¼ ì…ë ¥í•˜ì„¸ìš” > ");
 		setTarget(in.nextLine());
 		
-		System.out.println("½Å°í »ç°ÇÀÇ ¹ß»ı ³¯Â¥¸¦ ÀÔ·ÂÇÏ¼¼¿ä(yyyyMMdd > ");
+		System.out.println("ì‹ ê³  ì‚¬ê±´ì˜ ë°œìƒ ë‚ ì§œë¥¼ ì…ë ¥í•˜ì„¸ìš”(yyyyMMdd > ");
 		String dd = in.nextLine();
 		SimpleDateFormat transFormat = new SimpleDateFormat("yyyyMMdd");
 		try {
@@ -90,11 +90,11 @@ public class Report extends Board {
 		}
 
 		/*
-		 * °Ô½Ã±Û ¹øÈ£ / Á¦¸ñ / id / ³¯Â¥ / ³»¿ë / °ø°³¿©ºÎ / ¸»¸Ó¸®
+		 * ê²Œì‹œê¸€ ë²ˆí˜¸ / ì œëª© / id / ë‚ ì§œ / ë‚´ìš© / ê³µê°œì—¬ë¶€ / ë§ë¨¸ë¦¬
 		 */
 
 		/*
-		 * ½Å°í´ë»ó / »ç°Ç³¯Â¥
+		 * ì‹ ê³ ëŒ€ìƒ / ì‚¬ê±´ë‚ ì§œ
 		 */
 	}
 	
