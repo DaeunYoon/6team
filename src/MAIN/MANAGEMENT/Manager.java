@@ -43,13 +43,13 @@ public class Manager {
     	
     	User user = new User();	
     	
-    	System.out.println("Â÷°¨ÇÒ È¸¿øÀÇ ID¸¦ ÀÔ·ÂÇÏ¼¼¿ä : ");
+    	System.out.println("ì°¨ê°í•  íšŒì›ì˜ IDë¥¼ ì…ë ¥í•˜ì„¸ìš” : ");
     	target_id = sc.nextLine();
     	
     	if((user = offerUserInfo(target_id)) != null)
     	{
 	    	Score = user.getAverageScore();
-	    	System.out.println("Â÷°¨ÇÒ ÆòÁ¡À» ÀÔ·ÂÇÏ¼¼¿ä : ");
+	    	System.out.println("ì°¨ê°í•  í‰ì ì„ ì…ë ¥í•˜ì„¸ìš” : ");
 	    	sub = sc.nextInt();
 	    	user.setAverageScore(Score - sub);
 	    	
@@ -72,7 +72,7 @@ public class Manager {
 	    			
 	    			if(i == tokens - 2)
 	    			{
-	    				//¹Ù²ï ÁÙ·Î Ãâ·Â
+	    				//ë°”ë€ ì¤„ë¡œ ì¶œë ¥
 	    				repline = line.replace(String.valueOf(Score), String.valueOf(Score - sub));
 	    				
 	    				bufferedWriter.write(repline);
@@ -81,7 +81,7 @@ public class Manager {
 	    		}
 	    		if(flag == false)
 	    		{
-	    			//¿ø·¡ ÁÙ·Î Ãâ·Â
+	    			//ì›ë˜ ì¤„ë¡œ ì¶œë ¥
 	    			bufferedWriter.write(line);
 	    			bufferedWriter.newLine();
 	    		}
@@ -106,7 +106,7 @@ public class Manager {
     		ex2.printStackTrace();
     	}
     	
-    	//¿ø·¡ ÆÄÀÏ Áö¿ì°í ¹Ù²ï ÆÄÀÏ·Î ´ëÃ¼
+    	//ì›ë˜ íŒŒì¼ ì§€ìš°ê³  ë°”ë€ íŒŒì¼ë¡œ ëŒ€ì²´
     	inputFile.delete();
     	outputFile.renameTo(new File(fileName));
     	
@@ -135,22 +135,22 @@ public class Manager {
         }
         else
         {
-        	System.out.println("ÇØ´ç È¸¿ø ¾øÀ½, ´Ù½Ã ½Ãµµ ÇØÁÖ¼¼¿ä.");
+        	System.out.println("í•´ë‹¹ íšŒì› ì—†ìŒ, ë‹¤ì‹œ ì‹œë„ í•´ì£¼ì„¸ìš”.");
         	return null;
         }
     }
 
-    public void addToBlackList() throws IOException{ //ÆÄÀÏ¿¡ user Á¤º¸ Ãß°¡
+    public void addToBlackList() throws IOException{ //íŒŒì¼ì— user ì •ë³´ ì¶”ê°€
     	String FileName = "blacklist.txt";
     	String target_id;
     	String reason;
     	User user = new User();
     	
-    	System.out.println("ºí·¢¸®½ºÆ®¿¡ Ãß°¡ÇÒ È¸¿øÀÇ ID¸¦ ÀÔ·ÂÇÏ¼¼¿ä : ");
+    	System.out.println("ë¸”ë™ë¦¬ìŠ¤íŠ¸ì— ì¶”ê°€í•  íšŒì›ì˜ IDë¥¼ ì…ë ¥í•˜ì„¸ìš” : ");
     	target_id = sc.nextLine();
     	user = offerUserInfo(target_id);
         
-    	System.out.println("ºí·¢ »çÀ¯ : ");
+    	System.out.println("ë¸”ë™ ì‚¬ìœ  : ");
     	reason = sc.nextLine();
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(FileName, true));
         bufferedWriter.write(user.getId() + "\n" );
@@ -165,12 +165,12 @@ public class Manager {
     	String FileName = "answer.txt";
     	Answer a = new Answer();
         
-        a.answer_code += 1; //´äº¯±Û ¹øÈ£
-        System.out.println("´äº¯±Û ÀÛ¼º ³¯Â¥  (ex.20171214) : ");
+        a.answer_code += 1; //ë‹µë³€ê¸€ ë²ˆí˜¸
+        System.out.println("ë‹µë³€ê¸€ ì‘ì„± ë‚ ì§œ  (ex.20171214) : ");
         a.date = sc.nextInt();
         sc.nextLine();
         
-        System.out.println("ÇÑÁÙ ´äº¯ ÀÛ¼º : ");
+        System.out.println("í•œì¤„ ë‹µë³€ ì‘ì„± : ");
         a.content = sc.nextLine();
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(FileName, true));
         bufferedWriter.write(a.answer_code + "\n" );
@@ -188,21 +188,21 @@ public class Manager {
         String check;
         //Demo new_demo = new Demo();
         while(true){
-            System.out.print("¾ÆÀÌµğ : ");
+            System.out.print("ì•„ì´ë”” : ");
             ID = sc.nextLine();
-            System.out.print("ºñ¹Ğ¹øÈ£ : ");
+            System.out.print("ë¹„ë°€ë²ˆí˜¸ : ");
             Password = sc.nextLine();
             if(ID.equals(id)&&Password.equals(password)) {
-                System.out.println("°ü¸®ÀÚ ¸ğµå·Î Á¢¼ÓÇÏ¿´½À´Ï´Ù.");
+                System.out.println("ê´€ë¦¬ì ëª¨ë“œë¡œ ì ‘ì†í•˜ì˜€ìŠµë‹ˆë‹¤.");
                 //Manager_Menu();
                 return 1;
                 //break;
             }
-            if(!ID.equals(id)) System.out.println("°ü¸®ÀÚ ¾ÆÀÌµğ°¡ Æ²·È½À´Ï´Ù.");
-            else if(!Password.equals(password)) System.out.println("°ü¸®ÀÚ ºñ¹Ğ ¹øÈ£°¡ Æ²·È½À´Ï´Ù.");
+            if(!ID.equals(id)) System.out.println("ê´€ë¦¬ì ì•„ì´ë””ê°€ í‹€ë ¸ìŠµë‹ˆë‹¤.");
+            else if(!Password.equals(password)) System.out.println("ê´€ë¦¬ì ë¹„ë°€ ë²ˆí˜¸ê°€ í‹€ë ¸ìŠµë‹ˆë‹¤.");
             else if(!ID.equals(id)|| !Password.equals(password))
-                System.out.println("°ü¸®ÀÚ ¾ÆÀÌµğ¿Í ºñ¹Ğ¹øÈ£°¡ Æ²·È½À´Ï´Ù.");
-            System.out.println("Á¾·á¸¦ ¿øÇÏ½Ã¸é 'q', °è¼Ó ·Î±×ÀÎ ÇÏ½Ã·Á¸é 'c'¸¦ ´­·¯ÁÖ¼¼¿ä : ");
+                System.out.println("ê´€ë¦¬ì ì•„ì´ë””ì™€ ë¹„ë°€ë²ˆí˜¸ê°€ í‹€ë ¸ìŠµë‹ˆë‹¤.");
+            System.out.println("ì¢…ë£Œë¥¼ ì›í•˜ì‹œë©´ 'q', ê³„ì† ë¡œê·¸ì¸ í•˜ì‹œë ¤ë©´ 'c'ë¥¼ ëˆŒëŸ¬ì£¼ì„¸ìš” : ");
             check = sc.nextLine();
             if(check.equals('c')) continue;
             else if(check.equals('q')) break;
@@ -214,12 +214,12 @@ public class Manager {
     {
     	Scanner sc = new Scanner(System.in);
 
-        System.out.println("°ü¸®ÀÚ ¸Ş´º È­¸é");
-        System.out.println("¸Ş´º¸¦ ¼±ÅÃÇØÁÖ¼¼¿ä.");
-        System.out.println("1. ½Å°í È¸¿ø ÆòÁ¡ Â÷°¨ÇÏ±â ");
-        System.out.println("2. ºí·¢¸®½ºÆ® Ãß°¡ÇÏ±â");
-        System.out.println("3. ´äº¯¾²±â");
-        System.out.println("4. Á¾·áÇÏ±â");
+        System.out.println("ê´€ë¦¬ì ë©”ë‰´ í™”ë©´");
+        System.out.println("ë©”ë‰´ë¥¼ ì„ íƒí•´ì£¼ì„¸ìš”.");
+        System.out.println("1. ì‹ ê³  íšŒì› í‰ì  ì°¨ê°í•˜ê¸° ");
+        System.out.println("2. ë¸”ë™ë¦¬ìŠ¤íŠ¸ ì¶”ê°€í•˜ê¸°");
+        System.out.println("3. ë‹µë³€ì“°ê¸°");
+        System.out.println("4. ì¢…ë£Œí•˜ê¸°");
 
         int i = sc.nextInt();
 
