@@ -37,20 +37,20 @@ public class Inquiry extends Board{
 
         i.boardCode += 1;
 
-        System.out.println("°Ô½Ã±Û Á¦¸ñÀ» ÀÔ·ÂÇÏ¼¼¿ä > ");
+        System.out.println("ê²Œì‹œê¸€ ì œëª©ì„ ì…ë ¥í•˜ì„¸ìš” > ");
         i.title = in.nextLine();
 
         i.id_writer = id;
 
         i.writeDate = wdate;
 
-        System.out.println("°Ô½Ã±Û ³»¿ëÀ» ÀÔ·ÂÇÏ¼¼¿ä > ");
+        System.out.println("ê²Œì‹œê¸€ ë‚´ìš©ì„ ì…ë ¥í•˜ì„¸ìš” > ");
         i.contents = in.nextLine();
 
-        System.out.println("°Ô½Ã±Û °ø°³¿©ºÎ¸¦ ÀÔ·ÂÇÏ¼¼¿ä(1:°ø°³, 0: ºñ°ø°³) > ");
+        System.out.println("ê²Œì‹œê¸€ ê³µê°œì—¬ë¶€ë¥¼ ì…ë ¥í•˜ì„¸ìš”(1:ê³µê°œ, 0: ë¹„ê³µê°œ) > ");
         i.goPublic = in.nextBoolean();
 
-        i.head = "¹®ÀÇ";
+        i.head = "ë¬¸ì˜";
 
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("board.txt",true));
         bufferedWriter.write(i.boardCode + "\n");
@@ -61,7 +61,7 @@ public class Inquiry extends Board{
         bufferedWriter.write(i.goPublic + "\n");
         bufferedWriter.write(i.head + "\n");
 		/*
-		 °Ô½Ã±Û ¹øÈ£ / Á¦¸ñ / id / ³¯Â¥ / ³»¿ë / °ø°³¿©ºÎ / ¸»¸Ó¸®
+		 ê²Œì‹œê¸€ ë²ˆí˜¸ / ì œëª© / id / ë‚ ì§œ / ë‚´ìš© / ê³µê°œì—¬ë¶€ / ë§ë¨¸ë¦¬
 		 */
     }
 
