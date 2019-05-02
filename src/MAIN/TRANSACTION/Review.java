@@ -11,11 +11,11 @@ public class Review {
     private String review;
 
     //method
-    public void updateScore(String provider, String consumer, int Score){
+    public void updateScore(String provider, String consumer, int Score, Transaction transaction){
 
     }
 
-    public void updateReview(String provider, String consumer, String contents){
+    public void updateReview(String provider, String consumer, String contents, Transaction transaction){
 
     }
 }
