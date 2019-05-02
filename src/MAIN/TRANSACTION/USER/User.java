@@ -24,7 +24,7 @@ public class User {
     private int transCount;
     private ArrayList<Wish> wishRoom;
     private ArrayList<Review> review;
-    private Array<SearchingFilter> sf;
+    private ArrayList<SearchingFilter> sf;
 
     //Additional variable
     Scanner sc = new Scanner(System.in);

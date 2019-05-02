@@ -11,14 +11,14 @@ import MAIN.TRANSACTION.USER.User;
 public class Board {
 
 	private Answer answer;
-	private int boardCode;
-    private String title;
-    private String id_writer;
-    private Date writeDate;
-    private String contents;
-    private boolean goPublic;
-    private String head;
-    
+	protected int boardCode;
+	protected String title;
+	protected String id_writer;
+	protected Date writeDate;
+	protected String contents;
+	protected boolean goPublic;
+	protected String head;
+
     private User user;
     
     public Board() {
