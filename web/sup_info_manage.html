@@ -3,9 +3,9 @@
     <head>
         <meta http-equiv="Content-Type" content = "text/html; charset=utf-8">
         <title>RoomShare</title>
+        <link href="css/style1.css" rel="stylesheet" type="text/css"> 
         <link href="css/sup_style.css" rel="stylesheet" type="text/css"> 
         <script>
-                //로그아웃기능 구현
                 function logout() {
                                 var conf = confirm("logout하시겠습니까 ? ");
                                 //확인
@@ -18,21 +18,7 @@
                                     //이전으로 돌아가기
                                 }    
                             }
-                //신고기능 구현
-                function notification() {
-                    var conf = confirm("사용자를 신고하시겠습니까?");
-                    if(conf)
-                    {
-                        var reason;
-                        while(!reason) {
-                            reason = prompt("사유를 적어주세요");
-                            //이유, 사용자 전송하는 내용 필요
-                            if(reason)
-                                alert = "신고가 완료되었습니다.";
-                        }
-                    }
-                }
-        </script>
+                </script>
     </head>
     <body> 
         <!--header-->
@@ -49,21 +35,37 @@
 
         <!--center-->
         <form>
-        <div class = "container">
-            <table>
-                <caption style ="font-weight: bold; font-size:160%; padding:5px">이용내역</caption>
-                <tread>
-                    <tr>
-                        <th>방 이름</th> <th>날짜</th> <th>예약자</th> <th>신고하기</th>
-                    </tr>
-                </tread>
-                <tbody>
-                    <tr><a href><td>방1</td></a> <td>2019-01-02</td> <a href><td>예약자</td> <td><button type="button" value = "예약자"  name="예약자" onclick = "notification()">신고하기</button>
-                    <tr><a href><td>방2</td></a> <td>2019-01-03</td> <a href><td>예약자</td></a> <td><button type="button" value = "예약자"  name="예약자" onclick = "notification()">신고하기</button></tr>
-                </tbody>
-
-            </table>
-        </div>
+                <fieldset>
+                        <h3>내 별점</h3>
+                        3.3 / 5 점
+                    </fieldset>
+                <fieldset>
+                    <h3>개인정보관리</h3>
+                    <div>
+                    <p>
+                            <input type = "text" id = "ID" name="db_ID" placeholder="ID" required >
+                            <input type ="password" id = "PW" name="db_PW" placeholder="PW" required>
+                            <input type ="password" id = "PWcheck" name="db_PWch" placeholder="PW CHECK" required>
+                    </p>
+                    <p>
+                            <input type="text" id = "name" name = "db_name" placeholder="NAME" required>
+                    </p>
+                    <p>
+                        <input type="email" id="email" name="db_id" placeholder="E-MAIL" required>
+                        <input type="tel" id = "tel" name="db_tel" placeholder="TELEPHONE NUM" required>
+                    </p> 
+                    <br>
+                    <p>
+                        <input type="radio" name="type" value="consumer">소비자<br>
+                        <input type="radio" name="type" value="supplier">공급자<br>
+                    </p>   
+                    <br>
+                    <p>
+                            <button class="btn"  type="submit">수정</button>			
+                    </p>        
+                    </div>
+                </fieldset>
+       
         </form>
 
         <!--logout function-->
