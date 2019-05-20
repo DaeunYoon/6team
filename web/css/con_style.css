@@ -1,0 +1,37 @@
+*{margin:0; padding:0;}
+
+/*header*/
+.header{text-align:center}
+.header h1{padding:30px 0;}
+
+.header a:link, a:visited {
+    color:#fff; font-size:15px; font-weight:normal; text-decoration: none; display: inline-block;
+  }
+
+.menu {background:#000; color:#fff; font-size:15px; font-weight:normal; padding:10px 0; letter-spacing:5px;}
+
+.contents {
+    margin-top: 48px; margin-left: auto; margin-right: auto; width: 50%
+}
+
+
+.search{
+    margin:50px 0;
+    text-align:center;
+}
+
+input[type=text] {
+    width:400px;
+    border-radius:5px;
+}
+
+input[type=text], button[type=submit], select {
+    padding: 5px;
+    font-size: 16px;
+} 
+
+.room_sample {
+    margin:100px 0;
+    text-align:center;
+}
+

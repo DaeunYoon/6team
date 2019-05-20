@@ -1,0 +1,74 @@
+*{margin:0; padding:0;}
+
+/*header*/
+.header{text-align:center}
+.header h1{padding:30px 0;}
+
+.header a:link, a:visited {
+    color:#fff; font-size:15px; font-weight:normal; text-decoration: none; display: inline-block;
+  }
+
+.menu {background:#000; color:#fff; font-size:15px; font-weight:normal; padding:10px 0; letter-spacing:5px;}
+
+.contents { margin-top: 48px; margin-left: auto; margin-right: auto; width: 900px; }
+
+.roon_info_img { width: 100%; height: 300px; position: relative;}
+.roon_info_img img { width: 100%; height: 100%; }
+
+.room_info_img_1 { 
+    overflow: hidden; width: 50%; height: 100%; float: left; 
+    border-width: 1px; border-style: solid; box-sizing: border-box; 
+}
+.room_info_img_2 {
+    overflow: hidden; width: 25%; height: 100%; float: left;
+}
+.room_info_img_2_1 {
+    overflow: hidden; height: 50%; border-width: 1px; 
+    border-style: solid; box-sizing: border-box;
+}
+
+
+.roon_info_contents_left { width: 70%; float: left; box-sizing: border-box; padding-right: 24px;}
+.roon_info_contents_right { width: 30%; height: 330px; float: left; box-sizing: border-box; border-style: solid; border-width: 1px; }
+
+.roon_info_contents_right .check_InOut {
+    width: 100%; overflow: hidden; box-sizing: border-box; border-width: 1px; 
+    border-style: solid; border-color: rgb(235, 235, 235); border-image: initial; border-radius: 2px;
+    padding: 2px;
+}
+
+.roon_info_contents_right .check_InOut input[type=text] {
+    background-color: transparent; border:0 solid black; width: 100%; box-sizing: border-box;
+}
+
+.roon_info_contents_right .room_person {
+    width: 100%; overflow: hidden; box-sizing: border-box; border-width: 1px;
+    border-style: solid; border-color: rgb(235, 235, 235); border-image: initial; border-radius: 2px;
+    padding: 2px;
+}
+
+
+.all_img { 
+    box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.14);
+    position: absolute;
+    left: auto;
+    right: 12px;
+    bottom: 12px;
+}
+
+.all_img_btn {
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 22px;
+    font-family: sans-serif;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    font-weight: 600;
+    border-width: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    box-shadow: none;
+    background: #ffffff;
+    border-color: transparent;
+    color: #484848;
+}

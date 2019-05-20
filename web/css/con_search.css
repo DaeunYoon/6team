@@ -1,0 +1,45 @@
+*{margin:0; padding:0;}
+
+/*header*/
+.header{text-align:center}
+.header h1{padding:30px 0;}
+
+.header a:link, a:visited {
+    color:#fff; font-size:15px; font-weight:normal; text-decoration: none; display: inline-block;
+  }
+.menu {background:#000; color:#fff; font-size:15px; font-weight:normal; padding:10px 0; letter-spacing:5px;}
+
+/*center*/
+
+.contents {margin-top: 48px; margin-left: auto; margin-right: auto; width: 1200px}
+
+.search{margin:50px 0; text-align:center;}
+
+input[type=text] {width:400px; border-radius:5px;}
+
+input[type=text], button[type=submit], select {padding: 5px; font-size: 16px;}
+
+.search_result {background-color: white;}
+
+.search_result .room_grid {display: grid; grid-template-columns: 240px 240px 240px 240px 240px;}
+
+.search_result .room_grid .room_all {overflow: hidden; padding: 10px; border: 0px solid #c2c2c2; width: 220px;}
+.search_result .room_grid .room_all a:link, a:visited {text-decoration: none; color: black;}
+.search_result .room_grid .room_all a:hover {text-decoration: underline; color: black;}
+
+/*이미지 크기*/
+.search_result .room_grid .room_all img {width: 220px;}
+
+/*제목*/
+.search_result .room_grid .room_all .room_tit {overflow: hidden; font-size: 18px; text-overflow : ellipsis; white-space: nowrap;}
+
+/*가격*/
+.search_result .room_grid .room_all .room_price {display: block; height: 18px; margin-bottom: 7px; line-height: 20px; margin-top: 7px;}
+
+/*내용*/
+.search_result .room_grid .room_all .room_cont {overflow: hidden; display: block; width: auto; height: 60px; margin-bottom: 7px; line-height: 28px; text-overflow : ellipsis;}
+
+/*페이징*/
+.paging {padding: 16px; text-align:center; width: 1000px; margin-left: auto; margin-right: auto;}
+.paging a {text-decoration: none; color: black; padding: 8px 8px;}
+.paging .on {background-color: #4CAF50; color: white; border-radius: 0px;}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lan = "ko">
+    <head>
+        <meta http-equiv="Content-Type" content = "text/html; charset=utf-8">
+        <title>RoomShare</title>
+        <link href="css/con_style.css" rel="stylesheet" type="text/css"> 
+        <script>
+                function logout() {
+                                var conf = confirm("logout하시겠습니까 ? ");
+                                //확인
+                                if(conf){
+                                    sessionStorage.clear();
+                                    location.href = "main(login).html";
+                                }
+                                //취소
+                                else{
+                                    //이전으로 돌아가기
+                                }    
+                            }
+        </script>
+    </head>
+    <body> 
+        <!--header-->
+        <div class = "header">
+            <a href = "con_main.html"><h1 style="color: black;">Room&nbsp;Share</h1></a>
+            <div class = "menu">
+                <span id = "log">logout</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href = "con_appointment.html">이용내역</a></span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href = "sup_info_manage.html">개인정보관리</a></span>
+            </div>
+        </div>
+
+        <!--center-->
+        <div class = "container">
+            <div class = "contents">
+                <div class = "search">
+                    <form>
+                        <select>
+                            <option value="search_all">전체</option>
+                            <option value="search_date">날짜</option>
+                            <option value="search_person">인원</option>
+                            <option value="search_location">위치</option>
+                        </select>
+                        <input type = "text">
+                        <button type = "submit" onclick="alert('Hello world')">검색</button>
+                    </form>
+                </div>
+
+                <div class = "room_sample">
+                    <a href="con_main.html">
+                         <img src="img/SAM_6355.jpg" width="300" align = "top">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+        
+        <script>
+                document.getElementById("log").addEventListener("click", logout);
+                
+        </script>
+        
+        
+
+
+    </body>
+
+
+</html>

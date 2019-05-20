@@ -1,0 +1,23 @@
+*{margin:0; padding:0;}
+
+/*header*/
+.header{text-align:center}
+.header h1{padding:30px 0;}
+
+.header a:link, a:visited {
+    font-size:15px; font-weight:normal; text-decoration: none; display: inline-block;
+  }
+
+
+.menu { background:#000; color:#fff; font-size:15px; font-weight:normal; padding:10px 0; letter-spacing:5px; }
+
+.contents {margin-top: 48px; margin-left: auto; margin-right: auto; width: 900px}
+.contents p {font-size: 26px; font-weight: bold; width: 900px;}
+
+table { width: 900px; text-align: center; margin-top: 2px; margin-left: auto; margin-right: auto }
+table a { text-decoration: none; color: black; }
+table, th, td { border: 1px solid #bcbcbc; height: 26px }
+
+.paging { padding: 16px; text-align:center; }
+.paging a { text-decoration: none; color: black; padding: 8px 8px; }
+.paging .on { background-color: #4CAF50; color: white; border-radius: 0px; }
