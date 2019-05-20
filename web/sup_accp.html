@@ -3,7 +3,6 @@
     <head>
         <meta http-equiv="Content-Type" content = "text/html; charset=utf-8">
         <title>RoomShare</title>
-        <link href="css/style1.css" rel="stylesheet" type="text/css"> 
         <link href="css/sup_style.css" rel="stylesheet" type="text/css"> 
         <script>
                 function logout() {
@@ -33,40 +32,34 @@
         </div>
         <br>
 
+        
         <!--center-->
-        <form>
-                <fieldset>
-                        <h3>내 별점</h3>
-                        3.3 / 5 점
-                    </fieldset>
-                <fieldset>
-                    <h3>개인정보관리</h3>
-                    <div>
-                    <p>
-                            <input type = "text" id = "ID" name="db_ID" placeholder="ID" required >
-                            <input type ="password" id = "PW" name="db_PW" placeholder="PW" required>
-                            <input type ="password" id = "PWcheck" name="db_PWch" placeholder="PW CHECK" required>
-                    </p>
-                    <p>
-                            <input type="text" id = "name" name = "db_name" placeholder="NAME" required>
-                    </p>
-                    <p>
-                        <input type="email" id="email" name="db_id" placeholder="E-MAIL" required>
-                        <input type="tel" id = "tel" name="db_tel" placeholder="TELEPHONE NUM" required>
-                    </p> 
-                    <br>
-                    <p>
-                        <input type="radio" name="type" value="consumer">소비자<br>
-                        <input type="radio" name="type" value="supplier">공급자<br>
-                    </p>   
-                    <br>
-                    <p>
-                            <button class="btn"  type="submit">수정</button>			
-                    </p>        
-                    </div>
-                </fieldset>
-       
-        </form>
+        <div class = "container">
+                <table>
+                    <caption style ="font-weight: bold; font-size:160%; padding:5px">1번방 신청내역</caption>
+                        <tbody>
+                            <tr>
+                                <th>날짜</th>
+                                <th>신청자</th>
+                                <th>승인/거절</th>
+                            </tr>
+                            <tr>
+                                <td>2019-03-02</td>
+                                <td>홍길동</td>
+                                <td><button type="button" value = "y">승인</button>
+                                <button type="button" value = "n">거절</button>
+                            </tr>
+                            <tr>
+                                <td>2019-03-02</td>
+                                <td>홍길동</td>
+                                <td><button type="button" value = "y">승인</button>
+                                <button type="button" value = "n">거절</button>
+                            </tr>
+                        </tbody>
+                </table>        
+                
+            </div>
+        </div>
 
         <!--logout function-->
         <script>

@@ -33,23 +33,27 @@
         <br>
 
         <!--center-->
-        <form>
         <div class = "container">
+            <form>
             <table>
-                <caption style ="font-weight: bold; font-size:160%; padding:5px">예약내역</caption>
-                <tread>
-                    <tr>
-                        <th>방이름</th> <th>신청인원</th>
-                    </tr>
-                </tread>
-                <tbody>
-                    <tr><a href><td>방1</td></a> <a href><td>3</td></a></tr>
-                    <tr><a href><td>방2</td></a> <a href><td>5</td></a></tr>
-                </tbody>
-
-            </table>
-        </div>
+                <caption style ="font-weight: bold; font-size:160%; padding:5px">예약신청내역</caption>
+                    <tbody>
+                        <tr>
+                            <th>방정보</th>
+                            <th>신청인원</th>
+                        </tr>
+                        <tr>
+                            <td>1번방</td>
+                            <td><button type="button" name = "rname" value = "1번방" onclick = "location.href='sup_accp.html'" style = "border :0px; width : 30px;">3</button></td>
+                        </tr>
+                        <tr>
+                            <td>2번방</td>
+                            <td><button type="button" name = "rname" value = "1번방" onclick = "location.href='sup_accp.html'" style = "border :0px; width : 30px;">3</button></td>
+                        </tr>
+                    </tbody>
+            </table>        
         </form>
+    
 
         <!--logout function-->
         <script>
