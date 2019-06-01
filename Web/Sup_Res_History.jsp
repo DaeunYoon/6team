@@ -1,7 +1,9 @@
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.DriverManager"%>
+<%@page import="login.LoginManager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <% LoginManager loginManager = LoginManager.getInstance(); %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -13,8 +15,8 @@
                                 var conf = confirm("logout하시겠습니까 ? ");
                                 //확인
                                 if(conf){
-                                    sessionStorage.clear();
-                                    location.href = "Main(common).jsp";
+                        			location.href = "logout.jsp";
+
                                 }
                                 //취소
                                 else{
@@ -40,6 +42,12 @@
 <body>
 
 <%
+//get ID value
+if(!loginManager.isLogin(session.getId())){ 
+	  throw new Exception("");
+} //세션 아이디가 로그인아니면
+String Id = null; //initializie to 0
+	  Id = (String)session.getAttribute("ID");
 	/*db connection*/
 	Class.forName("com.mysql.jdbc.Driver");
 	Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb?serverTimezone=UTC", "root","1234");

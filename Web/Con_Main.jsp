@@ -1,9 +1,9 @@
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="login.LoginManager"%>
+<% LoginManager loginManager = LoginManager.getInstance(); %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<% LoginManager loginManager = LoginManager.getInstance(); %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -35,6 +35,7 @@
 		} //세션 아이디가 로그인아니면
 		String Id = null; //initializie to 0
 		Id = (String) session.getAttribute("ID");
+
 		/*db connection*/
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb?serverTimezone=UTC", "root",
@@ -43,60 +44,45 @@
 
 	<!--header-->
 	<div class="header">
-		<a href="Sup_Main.jsp"><h1 style="color: black;">Room&nbsp;Share</h1></a>
+		<a href="Con_Main.jsp"><h1 style="color: black;">Room&nbsp;Share</h1></a>
 		<div class="menu">
 			<span id="log">logout</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a
-				href="Sup_New_Posting.jsp">새글쓰기</a></span>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a
-				href="Sup_Res_History.jsp">이용내역</a></span>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a
+				href="Con_Appo.jsp">이용내역</a></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a
 				href="Sup_Info_Manage.jsp">개인정보관리</a></span>
 		</div>
 	</div>
-	<br>
+
 
 	<!--center-->
-	<form>
-		<fieldset>
-			<h3>내 별점</h3>
-			3.3 / 5 점
-		</fieldset>
-		<fieldset>
-			<h3>개인정보관리</h3>
-			<div>
-				<p>
-					<input type="text" id="ID" name="db_ID" placeholder="ID" required>
-					<input type="password" id="PW" name="db_PW" placeholder="PW"
-						required> <input type="password" id="PWcheck"
-						name="db_PWch" placeholder="PW CHECK" required>
-				</p>
-				<p>
-					<input type="text" id="name" name="db_name" placeholder="NAME"
-						required>
-				</p>
-				<p>
-					<input type="email" id="email" name="db_id" placeholder="E-MAIL"
-						required> <input type="tel" id="tel" name="db_tel"
-						placeholder="TELEPHONE NUM" required>
-				</p>
-				<br>
-				<p>
-					<input type="radio" name="type" value="consumer">소비자<br>
-					<input type="radio" name="type" value="supplier">공급자<br>
-				</p>
-				<br>
-				<p>
-					<button class="btn" type="submit">수정</button>
-				</p>
+	<div class="container">
+		<div class="contents">
+			<div class="search">
+				<form>
+					<select>
+						<option value="search_all">전체</option>
+						<option value="search_date">날짜</option>
+						<option value="search_person">인원</option>
+						<option value="search_location">위치</option>
+					</select> <input type="text">
+					<button type="submit" onclick="alert('Hello world')">검색</button>
+				</form>
 			</div>
-		</fieldset>
 
-	</form>
+			<div class="room_sample">
+				<a href="con_main.html"> <img src="img/SAM_6355.jpg" width="300"
+					align="top">
+				</a>
+			</div>
+		</div>
+	</div>
 
-	<!--logout function-->
+
+
 	<script>
 		document.getElementById("log").addEventListener("click", logout);
 	</script>
-</body>
 
-</html>
+
+
+
+</body>
