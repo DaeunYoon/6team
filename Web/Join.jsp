@@ -1,5 +1,6 @@
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.DriverManager"%>
+<%@page import="login.LoginManager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -25,21 +26,20 @@
 
         <!--center-->
         <div class = "container">
-            <form>
+            <form action="Join_process.jsp" method = "post">
                 <fieldset>
                     <h3>Join</h3>
                     <div>
                     <p>
-                            <input type = "text" id = "ID" name="db_ID" placeholder="ID" required >
-                            <input type ="password" id = "PW" name="db_PW" placeholder="PW" required>
-                            <input type ="password" id = "PWcheck" name="db_PWch" placeholder="PW CHECK" required>
+                            <input type = "text" name="ID" placeholder="ID (email)" required >
+                            <input type ="password" name="PW" placeholder="PW" required>
+                            <input type ="password" name="PWch" placeholder="PW CHECK" required>
                     </p>
                     <p>
-                            <input type="text" id = "name" name = "db_name" placeholder="NAME" required>
+                            <input type="text" name = "name" placeholder="NAME" required>
                     </p>
                     <p>
-                        <input type="email" id="email" name="db_id" placeholder="E-MAIL" required>
-                        <input type="tel" id = "tel" name="db_tel" placeholder="TELEPHONE NUM" required>
+                        <input type="tel"  name="tel" placeholder="TELEPHONE NUM" required>
                     </p> 
                     <br>
                     <p>
@@ -48,7 +48,7 @@
                     </p>   
                     <br>
                     <p>
-                            <button class="btn"  type="submit">입력</button>			
+                            <button class="btn"  type="submit">입력</button>		
                     </p>        
                     </div>
                 </fieldset>
