@@ -1,9 +1,10 @@
-<%@page import="java.sql.Connection"%>
-<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.*"%>
 <%@page import="login.LoginManager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<% LoginManager loginManager = LoginManager.getInstance(); %>
+<%
+	LoginManager loginManager = LoginManager.getInstance();
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -23,6 +24,20 @@
 			//이전으로 돌아가기
 		}
 	}
+
+	function checkpw() {
+		var pw = document.getElementById('PW').value;
+		var pwch = document.getElementById('PWch').value;
+
+		if (pw != pwch) {
+			alert("비밀번호가 일치하지 않습니다.");
+			document.getElementById("PW").focus();
+		} else {
+			alert("비밀번호가 일치합니다.");
+			document.getElementById("name").focus();
+		}
+
+	}
 </script>
 <title>RoomShare</title>
 </head>
@@ -39,6 +54,26 @@
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb?serverTimezone=UTC", "root",
 				"1234");
+
+		String sql = "select ID, PW, Username, state, tel from account where id = '" + Id + "'";
+		Statement stmt = null;
+		stmt = con.createStatement();
+		ResultSet rs = null;
+		rs = stmt.executeQuery(sql);
+		System.out.println(sql);
+		String name = null;
+		String tel = null;
+		String pw = null;
+		String id = null;
+		int st = 0;
+
+		if (rs.next()) {
+			id = rs.getString("ID");
+			pw = rs.getString("PW");
+			name = rs.getString("Username");
+			st = rs.getInt("state");
+			tel = rs.getString("tel");
+		}
 	%>
 
 	<!--header-->
@@ -56,7 +91,7 @@
 	<br>
 
 	<!--center-->
-	<form>
+	<form action="Info_process.jsp" method="post">
 		<fieldset>
 			<h3>내 별점</h3>
 			3.3 / 5 점
@@ -65,24 +100,28 @@
 			<h3>개인정보관리</h3>
 			<div>
 				<p>
-					<input type="text" id="ID" name="db_ID" placeholder="ID" required>
-					<input type="password" id="PW" name="db_PW" placeholder="PW"
-						required> <input type="password" id="PWcheck"
-						name="db_PWch" placeholder="PW CHECK" required>
+					ID <input type="text" id="ID" name="ID" value="<%=id%>"
+						readonly> 
+					PW <input type="password" id="PW" name="PW"
+						value="<%=pw%>" required> 
+					<input type="password"
+						id="PWcheck" name="db_PWch" value="<%=pw%>" required>
 				</p>
+				<button class="btn" type="button" onclick="checkpw()">비밀번호
+					확인</button>
 				<p>
-					<input type="text" id="name" name="db_name" placeholder="NAME"
+					NAME <input type="text" id="name" name="name" value="<%=name%>"
 						required>
 				</p>
+				<%
+					if (st == 1)
+						out.println("<p><input type = 'text' name = 'type' value = 'consumer' readonly></p>");
+					else
+						out.println("<p><input type = 'text' name = 'type' value = 'provider' readonly></p>");
+				%>
 				<p>
-					<input type="email" id="email" name="db_id" placeholder="E-MAIL"
-						required> <input type="tel" id="tel" name="db_tel"
-						placeholder="TELEPHONE NUM" required>
-				</p>
-				<br>
-				<p>
-					<input type="radio" name="type" value="consumer">소비자<br>
-					<input type="radio" name="type" value="supplier">공급자<br>
+					TEL <input type="tel" id="tel" name="tel" value="<%=tel%>"
+						required>
 				</p>
 				<br>
 				<p>
@@ -90,8 +129,12 @@
 				</p>
 			</div>
 		</fieldset>
-
 	</form>
+	<%
+		rs.close();
+		stmt.close();
+		con.close();
+	%>
 
 	<!--logout function-->
 	<script>
