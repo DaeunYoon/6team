@@ -1,7 +1,8 @@
-<%@page import="java.sql.Connection"%>
-<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.*"%>
 <%@page import="login.LoginManager"%>
-<% LoginManager loginManager = LoginManager.getInstance(); %>
+<%
+	LoginManager loginManager = LoginManager.getInstance();
+%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -48,7 +49,7 @@
 		<div class="menu">
 			<span id="log">logout</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a
 				href="Con_Appo.jsp">이용내역</a></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a
-				href="Sup_Info_Manage.jsp">개인정보관리</a></span>
+				href="Con_Info_Manage.jsp">개인정보관리</a></span>
 		</div>
 	</div>
 
@@ -64,25 +65,72 @@
 						<option value="search_person">인원</option>
 						<option value="search_location">위치</option>
 					</select> <input type="text">
-					<button type="submit" onclick="alert('Hello world')">검색</button>
+					<button type="button" onclick="alert('Hello world')">검색</button>
 				</form>
-			</div>
-
-			<div class="room_sample">
-				<a href="con_main.html"> <img src="img/SAM_6355.jpg" width="300"
-					align="top">
-				</a>
 			</div>
 		</div>
 	</div>
 
+	<form action="Con_Room_Info.jsp" method="post">
+		<div class="room_grid">
 
+			<div class="room_all">
+
+				<table>
+				<caption style="font-weight: bold; font-size: 160%; padding: 5px">방정보</caption>
+				<tread>
+				<tr>
+					
+					<th>방이름</th>
+					<th>가격</th>
+					<th>방주인</th>
+					<th>별점</th>
+					<th>상세정보</th>
+					
+				</tr>
+				</tread>
+				<tbody>
+					
+			
+
+			
+				<%
+					String title = null, host = null, addr = null, rid = null;
+					int price = 0;
+					double score = 0;
+
+					String sql = "select RoomID,room_title, hostID, cost, add1, add2, add3, add4, roomscore from room_info";
+					Statement stmt = null;
+					stmt = con.createStatement();
+					ResultSet rs = null;
+					rs = stmt.executeQuery(sql);
+					System.out.println(sql);
+
+					while (rs.next()) {
+						rid = rs.getString("RoomID");
+						title = rs.getString("room_title");
+						host = rs.getString("hostID");
+						for (int i = 1; i < 5; i++)
+							addr += rs.getString("add" + i);
+						price = rs.getInt("cost");
+						score = rs.getDouble("roomscore");
+						
+						out.println("<tr><td><class='room_tit'><strong>" + title + "</strong></td> <td><span class='roomprice'>" + price
+								+ "</span></td> <td><span class='room_host'>" + host + "</span></td> <td><span class='room_score'>" + score
+								+ "</span></td><td><button type = 'submit' name = 'rid' value = '"+rid+"'<td>detail</tr>");
+					}
+
+					
+				%>
+					</tbody>
+					</table>
+			</div>
+
+
+		</div>
+	</form>
 
 	<script>
 		document.getElementById("log").addEventListener("click", logout);
 	</script>
-
-
-
-
 </body>
