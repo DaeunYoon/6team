@@ -1,0 +1,3 @@
+SELECT * FROM roomshare.review;
+INSERT INTO `roomshare`.`review` (`WriterID`, `title`, `contents`, `evaluation`, `RoomID`, `RecieverID`) VALUES ('jph04135@naver.com', '아늑하고 좋아요', '정말 좋아요 최고', '100', '3', 'daeun@naver.com');
+INSERT INTO `roomshare`.`review` (`WriterID`, `title`, `contents`, `evaluation`, `RoomID`, `RecieverID`) VALUES ('daeun@naver.com', '깨끗하고 좋아요', '깨끗해요!', '90', '1', 'jph04135@naver.com');

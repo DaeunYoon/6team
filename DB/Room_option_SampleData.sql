@@ -1,0 +1,4 @@
+SELECT * FROM roomshare.room_option;
+INSERT INTO `roomshare`.`room_option` (`Kitchen`, `internet`, `bathroom`, `parking`, `airconditional`, `washingmachine`, `boiler`, `roomID`) VALUES ('1', '1', '1', '1', '1', '1', '1', '1');
+INSERT INTO `roomshare`.`room_option` (`Kitchen`, `internet`, `bathroom`, `parking`, `airconditional`, `washingmachine`, `boiler`, `roomID`) VALUES ('1', '1', '1', '0', '1', '1', '1', '2');
+INSERT INTO `roomshare`.`room_option` (`Kitchen`, `internet`, `bathroom`, `parking`, `airconditional`, `washingmachine`, `boiler`, `roomID`) VALUES ('1', '0', '1', '1', '1', '1', '1', '3');
