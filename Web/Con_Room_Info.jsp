@@ -155,8 +155,8 @@
 						</div>
 
 						<div>
-							check-in <input type="text" name="in"> check-out <input
-								type="text" name="out">
+							check-in <input type="date" name="in"> check-out <input
+								type="date" name="out">
 						</div>
 			</div>
 

@@ -52,7 +52,7 @@
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb?serverTimezone=UTC", "root",
 					"1234");
 
-			String sql = "select ID, PW, Username, state, tel from account where id = '" + Id + "'";
+			String sql = "select ID, PW, Username, state, PhoneNumber from account where id = '" + Id + "'";
 			Statement stmt = null;
 			stmt = con.createStatement();
 			ResultSet rs = null;
@@ -69,7 +69,7 @@
 				pw = rs.getString("PW");
 				name = rs.getString("Username");
 				st = rs.getInt("state");
-				tel = rs.getString("tel");
+				tel = rs.getString("PhoneNumber");
 			}
 	%>
 

@@ -54,7 +54,7 @@
 		if(st.equals("consumer"))
 			stt = 1; //소비자
 		
-		String sql = "Update account set pw = '" + pw + "', Username ='"+name+"', tel = '" +tel+ "' Where ID = '"+id+"'";
+		String sql = "Update account set pw = '" + pw + "', Username ='"+name+"', PhoneNumber = '" +tel+ "' Where ID = '"+id+"'";
 		PreparedStatement pstmt = null;
 		pstmt = con.prepareStatement(sql);
 		pstmt.execute();
