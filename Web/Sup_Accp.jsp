@@ -1,5 +1,4 @@
-<%@page import="java.sql.Connection"%>
-<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.*"%>
 <%@page import="login.LoginManager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -40,6 +39,23 @@
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb?serverTimezone=UTC", "root",
 				"1234");
+		String rid = request.getParameter("rid");
+		
+		String sql = "select room_title from room_info where RoomID ='" +rid+"'";
+		Statement st = null;
+		st = con.createStatement();
+		ResultSet rs = st.executeQuery(sql);
+		String rname = null;
+		
+		//get room title
+		if(rs.next())
+			rname = rs.getString(1);
+		
+		//get reserve info
+		sql = "select guestID,StartDate,EndDate from room_reserve_info where RoomId = '" + rid +"'";
+		rs = st.executeQuery(sql);
+		
+		
 	%>
 
 	<!--header-->
@@ -60,7 +76,7 @@
 	<!--center-->
 	<div class="container">
 		<table>
-			<caption style="font-weight: bold; font-size: 160%; padding: 5px">1번방
+			<caption style="font-weight: bold; font-size: 160%; padding: 5px"><%=rname %>
 				신청내역</caption>
 			<tbody>
 				<tr>
@@ -68,20 +84,18 @@
 					<th>신청자</th>
 					<th>승인/거절</th>
 				</tr>
-				<tr>
-					<td>2019-03-02</td>
-					<td>홍길동</td>
-					<td>
-						<button type="button" value="y">승인</button>
-						<button type="button" value="n">거절</button>
-				</tr>
-				<tr>
-					<td>2019-03-02</td>
-					<td>홍길동</td>
-					<td>
-						<button type="button" value="y">승인</button>
-						<button type="button" value="n">거절</button>
-				</tr>
+				<%
+				while(rs.next()) {
+				String guestID = rs.getString(1);
+				String sdate = rs.getString(2);
+				String edate = rs.getString(3);
+				
+				out.println("<td>"+sdate+" ~ "+edate+"</td><td>"+guestID
+						+"</td> <td><button type='submit' name = 'req'"
+						+"value='y'>승인</button> <button type='submit' name = 'req' value='n'>거절</button></td></tr>");
+				}
+				%>
+				
 			</tbody>
 		</table>
 

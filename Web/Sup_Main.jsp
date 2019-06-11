@@ -1,5 +1,5 @@
-<%@page import="java.sql.Connection"%>
-<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.*"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="login.LoginManager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -39,6 +39,13 @@
 		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb?serverTimezone=UTC", "root",
 				"1234");
 		System.out.println(Id);
+		
+		String sql = "select roomID from room_info where hostID = '" + Id + "'" ;
+		Statement st = null;
+		st = con.createStatement();
+		ResultSet rs = st.executeQuery(sql);
+		System.out.println(sql);
+				
 	%>
 
 	<!--header-->
@@ -57,7 +64,7 @@
 
 	<!--center-->
 	<div class="container">
-		<form>
+		<form action = "Sup_Accp.jsp" method = "post">
 			<table>
 				<caption style="font-weight: bold; font-size: 160%; padding: 5px">예약신청내역</caption>
 				<tbody>
@@ -65,18 +72,44 @@
 						<th>방정보</th>
 						<th>신청인원</th>
 					</tr>
-					<tr>
-						<td>1번방</td>
-						<td><button type="button" name="rname" value="1번방"
-								onclick="location.href='Sup_Accp.jsp'"
-								style="border: 0px; width: 30px;">3</button></td>
-					</tr>
-					<tr>
-						<td>2번방</td>
-						<td><button type="button" name="rname" value="1번방"
-								onclick="location.href='Sup_Accp.jsp'"
-								style="border: 0px; width: 30px;">3</button></td>
-					</tr>
+					
+					<%
+					while(rs.next())
+					{
+						int rid = 0;
+						rid = rs.getInt(1);
+						
+						
+						String sql2 = "select room_title from room_info where RoomID = '" + rid +"'";
+						Statement st2 = null;
+						st2 = con.createStatement();
+						ResultSet rs2 = st2.executeQuery(sql2);
+						String title = null;
+						if(rs2.next())
+							title = rs2.getString(1);
+						out.print("<tr><td><a href = 'Sup_Room_Info.jsp?rid="+ rid +"' style='text-decoration:none'>" + title +"</a></td>" );
+						
+						sql2 = "select Count(guestID) from room_reserve_info where RoomID = '" + rid +"' and conform = '0'";
+
+						rs2 = st2.executeQuery(sql2);
+						System.out.println(sql2);
+						int n = 0;
+						if(rs2.next())
+							n = rs2.getInt(1);
+						if(n!=0)
+							out.println("<td><button type='submit' name='rid' value='"
+								+ rid +"' style='border: 0px; width: 30px;'>"+ n +"</button></td></tr>");
+						else
+							out.println("<td>0</td></tr>");
+						st2.close();
+						rs2.close();
+						
+					}
+		
+					rs.close();
+					st.close();
+					con.close();
+					%>
 				</tbody>
 			</table>
 		</form>
