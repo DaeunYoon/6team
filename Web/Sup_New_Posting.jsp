@@ -4,7 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<% LoginManager loginManager = LoginManager.getInstance(); %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -23,61 +23,7 @@
 			//이전으로 돌아가기
 		}
 	}
-
-	function sendData() {
-
-	}
-	function date_mask(formd, textid) {
-
-		/*
-		 input onkeyup에서
-		 formd == this.form.name
-		 textid == this.name
-		 */
-
-		var form = eval("document." + formd);
-		var text = eval("form." + textid);
-
-		var textlength = text.value.length;
-
-		if (textlength == 4) {
-			text.value = text.value + "-";
-		} else if (textlength == 7) {
-			text.value = text.value + "-";
-		} else if (textlength > 9) {
-			//날짜 수동 입력 Validation 체크
-			var chk_date = checkdate(text);
-
-			if (chk_date == false) {
-				return;
-			}
-		}
-	}
-
-	function checkdate(input) {
-		var validformat = /^\d{4}\-\d{2}\-\d{2}$/; //Basic check for format validity 
-		var returnval = false;
-		if (!validformat.test(input.value)) {
-			alert("날짜 형식이 올바르지 않습니다. YYYY-MM-DD");
-		} else { //Detailed check for valid date ranges 
-			var yearfield = input.value.split("-")[0];
-			var monthfield = input.value.split("-")[1];
-			var dayfield = input.value.split("-")[2];
-			var dayobj = new Date(yearfield, monthfield - 1, dayfield);
-		}
-		if ((dayobj.getMonth() + 1 != monthfield)
-				|| (dayobj.getDate() != dayfield)
-				|| (dayobj.getFullYear() != yearfield)) {
-			alert("날짜 형식이 올바르지 않습니다. YYYY-MM-DD");
-		} else {
-			//alert ('Correct date'); 
-			returnval = true;
-		}
-		if (returnval == false) {
-			input.select();
-		}
-		return returnval;
-	}
+	
 </script>
 <title>RoomShare</title>
 </head>
@@ -111,7 +57,7 @@
 	<br>
 
 	<!--center-->
-	<form>
+	<form action = "Update.jsp" method = "post">
 		<div class="container">
 			<table>
 				<thead>
@@ -121,35 +67,54 @@
 					<tr>
 						<th>제목 :</th>
 						<td><input type="text" placeholder="제목을 입력하세요. "
-							name="subject" required /></td>
+							name="title" required /></td>
 					</tr>
-					<tr>
+						<tr>
 						<th>내용 :</th>
 						<td><textarea class="noresize" cols=70 rows=20
-								placeholder="내용을 입력하세요. " name="content" require></textarea></td>
+								placeholder="내용을 입력하세요. " name="cont" require></textarea></td>
 					</tr>
 					<tr>
 						<th>주소 :</th>
-						<td><input type="text" placeholder="주소를 입력하세요. " name="price"
+						<td><input type="text" placeholder="도/광역시를 입력하세요. " name="adr1"
+							required /><input type="text" placeholder="시/구를 입력하세요. " name="adr2"
+							required /><input type="text" placeholder="동을 입력하세요. " name="adr3"
+							required /><input type="text" placeholder="세부주소를 입력하세요. " name="adr4"
 							required /></td>
 					</tr>
 					<tr>
+						<th>침실수 :</th>
+						<td><input type="text" placeholder="침실수를 입력하세요. " name="bedroom"
+							required /></td>
+					</tr>
+					<tr>
+						<th>부엌 :</th>
+						<td>YES<input type="radio" name="kitchen" value = "1" required />
+						NO<input type="radio" name="kitchen" value = "0" required /></td>
+						
+					</tr>
+					<tr>
+						<th>인터넷 :</th>
+						<td>YES<input type="radio" name="internet" value = "1" required />
+						NO<input type="radio" name="internet" value = "0" required /></td>
+					</tr>
+					<tr>
+						<th>주차장 :</th>
+						<td>YES<input type="radio" name="parking" value = "1" required />
+						NO<input type="radio" name="parking" value = "0" required /></td>
+					</tr>
+					<tr>
 						<th>대여가능날짜 :</th>
-						<td><input type="text" name="start_date" maxlength="10"
-							onkeyup="javascipt:date_mask(this.form.name, this.name);"
-							placeholder="YYYY-MM-DD" require>
-						</textarea> ~ <input type="text" name="end_date" maxlength="10"
-							onkeyup="javascipt:date_mask(this.form.name, this.name);"
-							placeholder="YYYY-MM-DD" required>
-						</textarea></td>
+						<td><input type="date" name="start_date" required>
+						 ~ <input type="date" name="end_date" required>
+						</td>
 					</tr>
 					<tr>
 						<th>일박요금 :</th>
-						<td><input type="text" placeholder="금액을 입력하세요. " name="price" /></td>
+						<td ><input type="text" placeholder="금액을 입력하세요. " name="price" /></td>
 					</tr>
-					<tr>
-						<td colspan="2"><input type="submit" value="등록"
-							onclick="sendData()" /></td>
+					<tr style="margin:auto; text-align:center;">
+						<td colspan="2"><input style="width: 20%; margin: auto; height: 30px" type="submit" value="등록" /></td>
 					</tr>
 
 				</tbody>

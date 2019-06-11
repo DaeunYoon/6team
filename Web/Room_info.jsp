@@ -96,78 +96,55 @@
 
 			<div class="room_info_contents"
 				style="margin-top: 24px; box-sizing: border-box; overflow: hidden;">
-				<div class="roon_info_contents_left"
-					style="margin: auto; text-align: center">
+				<div class="roon_info_contents_left" style="margin:auto; text-align:center">
 					<div style="font-size: 24px">
 						<strong><%=title%></strong>
 					</div>
 
-					<div
-						style="font-size: 12px; border-bottom: 1px solid #c2c2c2; padding-bottom: 4px;">
+					<div style="font-size: 12px; border-bottom: 1px solid #c2c2c2; padding-bottom: 4px;">
 						<%=host%>
 					</div>
 
 
-					<div style="margin-top: 24px;"><%=addr%></div>
+						<div style="margin-top: 24px;"><%=addr%></div>
 
-					<div style="margin-top: 24px">
-						기타정보 <br> <span>침실수 : <%=broom%></span> <span>부엌</span>
-						<%
-							if (kit == 1)
-								out.println("O");
-							else
-								out.println("X");
-						%>
-						<span>인터넷</span>
-						<%
-							if (inter == 1)
-								out.println("O");
-							else
-								out.println("X");
-						%>
-						<span>주차장</span>
-						<%
-							if (park == 1)
-								out.println("O");
-							else
-								out.println("X");
-						%>
+						<div style="margin-top: 24px">
+							기타정보 <br> <span>침실수 : <%=broom%></span> <span>부엌</span>
+							<%
+								if (kit == 1)
+									out.println("O");
+								else
+									out.println("X");
+							%>
+							<span>인터넷</span>
+							<%
+								if (inter == 1)
+									out.println("O");
+								else
+									out.println("X");
+							%>
+							<span>주차장</span>
+							<%
+								if (park == 1)
+									out.println("O");
+								else
+									out.println("X");
+							%>
 
-					</div>
+						</div>
 				</div>
-
+				
 				<div style="width: 100%; box-sizing: border-box; padding: 16px;">
-					<div style="margin: auto; text-align: center">
+					<div style="margin:auto; text-align:center">
 						<span style="font-size: 24px;"><strong><%=price%>원</strong></span>
 						<span>/박</span>
 					</div>
-					<div style="margin: auto; text-align: center;">
+					<div style="margin:auto; text-align:center;">
 						<%=score%>
 						/ 10
 					</div>
 				</div>
 
-				<form action="" method="post">
-					<fieldset class="roon_info_contents_right" style="">
-						<div>
-							게스트 <input type="text" placeholder="인원수" name="people"> <br>
-							<br>
-						</div>
-
-						<div>
-							check-in <input type="date" name="in"> check-out <input
-								type="date" name="out">
-						</div>
-			</div>
-
-			<div style="margin: auto; text-align: center">
-				<button style="width: 50%; margin: auto;" type="submit">예약요청</button>
-			</div>
-		</div>
-
-	</div>
-	</fieldset>
-	</form>
 
 
 	<script>
