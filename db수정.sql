@@ -53,7 +53,11 @@ CREATE TABLE `room_reserve_info` (
   `StartDate` date NOT NULL,
   `EndDate` date NOT NULL,
   `ConsumerID` varchar(45) NOT NULL,
-  `HostID` varchar(45) NOT NULL,
   `conform` tinyint(4) NOT NULL,
-  PRIMARY KEY (`reserveNum`)
+  `guestID` varchar(45) NOT NULL,
+  PRIMARY KEY (`reserveNum`),
+  KEY `RoomID_idx` (`RoomID`),
+  KEY `ID_idx` (`guestID`),
+  CONSTRAINT `ID` FOREIGN KEY (`guestID`) REFERENCES `account` (`ID`),
+  CONSTRAINT `RoomID` FOREIGN KEY (`RoomID`) REFERENCES `room_info` (`RoomID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
