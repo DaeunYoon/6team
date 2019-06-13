@@ -52,7 +52,7 @@ CREATE TABLE `room_reserve_info` (
   `RoomID` int(11) NOT NULL,
   `StartDate` date NOT NULL,
   `EndDate` date NOT NULL,
-  `conform` tinyint(4) NOT NULL,
+  `conform` tinyint(4) NOT NULL DEFAULT '0',
   `guestID` varchar(45) NOT NULL,
   PRIMARY KEY (`reserveNum`),
   KEY `RoomID_idx` (`RoomID`),
