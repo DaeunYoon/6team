@@ -87,7 +87,7 @@
 						String title = null;
 						if(rs2.next())
 							title = rs2.getString(1);
-						out.print("<tr><td><a href = 'Sup_Room_Info.jsp?rid="+ rid +"' style='text-decoration:none'>" + title +"</a></td>" );
+						out.print("<tr><td><a href = 'Room_Info.jsp?rid="+ rid +"' style='text-decoration:none' onmouseover=\"'this.style.color='gray'\" onmouseout=\"this.style.color='black'\">" + title +"</a></td>" );
 						
 						sql2 = "select Count(guestID) from room_reserve_info where RoomID = '" + rid +"' and conform = '0'";
 

@@ -1,5 +1,4 @@
-<%@page import="java.sql.Connection"%>
-<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.*"%>
 <%@page import="login.LoginManager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -9,6 +8,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<style type="text/css">
+	td {margin: auto; text-align: center}
+</style>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="css/style1.css" rel="stylesheet" type="text/css">
 <link href="css/sup_style.css" rel="stylesheet" type="text/css">
@@ -55,6 +57,14 @@
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb?serverTimezone=UTC", "root",
 				"1234");
+		
+		//get not replied reserve info 
+		String sql = "select RoomId,StartDate,EndDate,reserveNum,conform from room_reserve_info where guestID = '" + Id +"' and conform = '0'";
+		System.out.println(sql);
+		Statement st = null;
+		st = con.createStatement();
+		ResultSet rs = st.executeQuery(sql);
+		
 	%>
 
 	<!--header-->
@@ -69,49 +79,86 @@
 
 	<!--center-->
 	<div class="container">
-		<div class="contents">
-			<p>예약목록</p>
-			<table border="0" cellpadding="0" cellspacing="0">
-				<colgroup>
-					<col width="112px">
-					<col width="auto">
-					<col width="150px">
-					<col width="190px">
-				</colgroup>
+		<div class="container">
+		<table sytle = "margin: auto; text-align: center">
+			<caption style="font-weight: bold; font-size: 160%; padding: 5px"><%=Id %> 님의 신청내역</caption>
+			<tbody>
+				<tr>
+					<th>날짜</th>
+					<th>방이름</th>
+					<th>예약상태</th>
+					<th>취소</th>
+				</tr>
+				<%
+				while(rs.next()) {
+				String rid = rs.getString(1);
+				String sdate = rs.getString(2);
+				String edate = rs.getString(3);
+				String resn = rs.getString(4);
+				int stat = rs.getInt(5); //reserve state
+				
+				String sql2 = "select room_title from room_info where RoomID ='" +rid+"'";
+				Statement st2 = con.createStatement();
+				ResultSet rs2 = st2.executeQuery(sql2);
+				rs2 = st2.executeQuery(sql);
 
-				<tbody>
-					<tr>
-						<th>날짜</th>
-						<th>방정보</th>
-						<th>예약상태</th>
-						<th>예약취소</th>
+				String rname = null;
+				
+				//get room title
+				if(rs2.next())
+					rname = rs2.getString(1);
+				rs2.close();
+				st2.close();
+				
+				%>
+				<td> <%=sdate %> ~ <%=edate %></td><td> <a href = "Room_Info.jsp?uid=<%=rid%>" style = "font-decoration : none;" 
+				onmouseover="this.style.color='gray'" onmouseout="this.style.color='black'"><%=rname%></a></td> 
+				<td>예약 대기중	</td>
+				<td>
+				<a href = "App_Cancle.jsp?rnum=<%=resn%>" style = "color : red">예약취소</a>
+				</tr>
+				<%
+				}
+				
+				//get denied reserve info 
+				sql = "select RoomId,StartDate,EndDate,reserveNum,conform from room_reserve_info where guestID = '" + Id +"' and conform = '2'";
+				st = null;
+				st = con.createStatement();
+				rs = st.executeQuery(sql);
+				
+				while(rs.next()) {
+					String rid = rs.getString(1);
+					String sdate = rs.getString(2);
+					String edate = rs.getString(3);
+					String resn = rs.getString(4);
+					int stat = rs.getInt(5); //reserve state
+					
+					String sql2 = "select room_title from room_info where RoomID ='" +rid+"'";
+					Statement st2 = con.createStatement();
+					ResultSet rs2 = st2.executeQuery(sql2);
+					rs2 = st2.executeQuery(sql);
+
+					String rname = null;
+					
+					//get room title
+					if(rs2.next())
+						rname = rs2.getString(1);
+					rs2.close();
+					st2.close();
+					
+					%>
+					<td> <%=sdate %> ~ <%=edate %></td><td> <a href = "Room_Info.jsp?uid=<%=rid%>" style = "font-decoration : none;" 
+					onmouseover="this.style.color='gray'" onmouseout="this.style.color='black'"><%=rname%></a></td> 
+					<td>거절</td>
+					<td>
+					<a href = "App_Cancle.jsp?rnum=<%=resn%>" style = "color : red">예약취소</a>
 					</tr>
-					<tr>
-						<td>2019-02-25</td>
-						<td>2</td>
-						<td>3</td>
-						<td><button type="button">취소</button></td>
-					</tr>
-					<tr>
-						<td>24</td>
-						<td>2</td>
-						<td>–</td>
-						<td><button type="button">취소</button></td>
-					</tr>
-					<tr>
-						<td>기준</td>
-						<td>일</td>
-						<td>–</td>
-						<td><button type="button">취소</button></td>
-					</tr>
-					<tr>
-						<td>1개</td>
-						<td>2일</td>
-						<td>–</td>
-						<td><button type="button">취소</button></td>
-					</tr>
-				</tbody>
-			</table>
+				<%
+				} 
+				%>
+				
+			</tbody>
+		</table>
 
 
 

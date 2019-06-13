@@ -71,7 +71,7 @@
 		</div>
 	</div>
 
-	<form action="Con_Room_Info.jsp" method="post">
+	<form action="Room_Info.jsp" method="post">
 		<div class="room_grid">
 
 			<div class="room_all">
