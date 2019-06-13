@@ -52,7 +52,7 @@
 			rname = rs.getString(1);
 		
 		//get reserve info
-		sql = "select guestID,StartDate,EndDate from room_reserve_info where RoomId = '" + rid +"'";
+		sql = "select guestID,StartDate,EndDate,reserveNum from room_reserve_info where RoomId = '" + rid +"' and conform = '0'";
 		rs = st.executeQuery(sql);
 		
 		
@@ -67,7 +67,7 @@
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a
 				href="Sup_Res_History.jsp">이용내역</a></span>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a
-				href="Sup_Info_Manage.jsp">개인정보관리</a></span>
+				href="Info_Manage.jsp">개인정보관리</a></span>
 		</div>
 	</div>
 	<br>
@@ -89,10 +89,17 @@
 				String guestID = rs.getString(1);
 				String sdate = rs.getString(2);
 				String edate = rs.getString(3);
+				String resn = rs.getString(4);
 				
-				out.println("<td>"+sdate+" ~ "+edate+"</td><td>"+guestID
-						+"</td> <td><button type='submit' name = 'req'"
-						+"value='y'>승인</button> <button type='submit' name = 'req' value='n'>거절</button></td></tr>");
+				%>
+				<td> <%=sdate %> ~ <%=edate %></td><td> <a href = "Look_Acco.jsp?uid=<%=guestID%>" style = "font-decoration : none;" 
+				onmouseover="this.style.color='gray'" onmouseout="this.style.color='black'"><%=guestID%></a>
+						</td> <td>
+						
+						<a href = "Res_yes.jsp?rnum=<%=resn%>" style = "font-decoration : none; background-color : blue; color:white;">승인</a> 
+						<a href = "Res_no.jsp?rnum=<%=resn%>" style = "font-decoration : none; background-color : red; color:white;">거절</a>
+				</td></tr>
+				<%
 				}
 				%>
 				
@@ -105,6 +112,8 @@
 	<!--logout function-->
 	<script>
 		document.getElementById("log").addEventListener("click", logout);
+		
+		
 	</script>
 
 </body>
