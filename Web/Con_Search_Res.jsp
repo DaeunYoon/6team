@@ -47,7 +47,7 @@
 		<div class="menu">
 			<span id="log">logout</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a
 				href="Con_Appo.jsp">이용내역</a></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a
-				href="Con_Info_Manage.jsp">개인정보관리</a></span>
+				href="Info_Manage.jsp">개인정보관리</a></span>
 		</div>
 	</div>
 

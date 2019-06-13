@@ -1,10 +1,10 @@
-<%@page import="java.sql.Connection"%>
-<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.*"%>
 <%@page import="login.LoginManager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
 	LoginManager loginManager = LoginManager.getInstance();
+//consumer의 정보 사용자가 볼 수 있는 페이지
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -25,18 +25,7 @@
 			//이전으로 돌아가기
 		}
 	}
-	//신고기능 구현
-	function notification() {
-		var conf = confirm("사용자를 신고하시겠습니까?");
-		if (conf) {
-			var reason;
 
-			reason = prompt("사유를 적어주세요", "신고 이유");
-			//이유, 사용자 전송하는 내용 필요
-			if (reason)
-				alert = "신고가 완료되었습니다.";
-		}
-	}
 </script>
 <title>RoomShare</title>
 </head>
@@ -53,9 +42,42 @@
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb?serverTimezone=UTC", "root",
 				"1234");
+
+		String id = request.getParameter("uid");
+		String sql = "select Username, phonenumber, evaluation from account where id = '" + id + "'";
+		Statement stmt = null;
+		stmt = con.createStatement();
+		ResultSet rs = null;
+		rs = stmt.executeQuery(sql);
+		String name = null;
+		String tel = null;
+		String pw = null;
+		String eval = null;
+		int st = 0;
+
+		if (rs.next()) {
+			name = rs.getString("Username");
+			tel = rs.getString("phonenumber");
+			eval = rs.getString("evaluation");
+		}
+
+	if(st == 1) {
 	%>
 
+
 	<!--header-->
+	<div class="header">
+		<a href="Con_Main.jsp"><h1 style="color: black;">Room&nbsp;Share</h1></a>
+		<div class="menu">
+			<span id="log">logout</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a
+				href="Con_Appo.jsp">이용내역</a></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a
+				href="Con_Info_Manage.jsp">개인정보관리</a></span>
+		</div>
+	</div>
+	<%
+			}
+			else {
+	%>
 	<div class="header">
 		<a href="Sup_Main.jsp"><h1 style="color: black;">Room&nbsp;Share</h1></a>
 		<div class="menu">
@@ -64,49 +86,46 @@
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a
 				href="Sup_Res_History.jsp">이용내역</a></span>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a
-				href="Info_Manage.jsp">개인정보관리</a></span>
+				href="Sup_Info_Manage.jsp">개인정보관리</a></span>
 		</div>
 	</div>
+	<%
+			}
+	%>
+
 	<br>
 
 	<!--center-->
-	<form action="notifi.jsp" method="POST">
-		<div class="container">
-			<table>
-				<caption style="font-weight: bold; font-size: 160%; padding: 5px">이용내역</caption>
-				<tread>
-				<tr>
-					<th>방 이름</th>
-					<th>날짜</th>
-					<th>예약자</th>
-					<th>신고하기</th>
-				</tr>
-				</tread>
-				<tbody>
-					<tr>
-						<a href><td>방1</td></a>
-						<td>2019-01-02</td>
-						<a href><td>예약자</td>
-							<td><button type="button" value="daeun" name="reser"
-									onclick="location.href = 'notifi.jsp?reser=daeun'">신고하기</button>
-						<tr>
-								<a href><td>방2</td></a>
-								<td>2019-01-03</td>
-								<a href><td>예약자</td></a>
-								<td><button type="button" value="예약자" name="reser"
-										onclick="location.href = 'notifi.jsp?reser=daeun'">신고하기</button>
-							</tr>
-				</tbody>
-
-			</table>
-		</div>
+	<form action="Info_process.jsp" method="post">
+		<fieldset>
+			<h3> 별점</h3>
+			<%=eval %> / 5 점
+		</fieldset>
+		<fieldset>
+			<h3>개인정보열람</h3>
+			<div>
+				<p>
+					<h4>ID</h4> <%=id%> <br> <br>
+				</p>
+					<h4>NAME</h4> <%=name %> <br> <br>
+				</p>
+				<p>
+					<h4>TEL</h4> <%=tel%> <br>
+						
+				</p>
+			</div>
+		</fieldset>
 	</form>
+	<%
+		rs.close();
+		stmt.close();
+		con.close();
+	%>
 
 	<!--logout function-->
 	<script>
 		document.getElementById("log").addEventListener("click", logout);
 	</script>
-
 </body>
 
 </html>
