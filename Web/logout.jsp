@@ -14,7 +14,7 @@
 				"1234");
 		session.invalidate();
 		out.println("<script>alert('로그아웃되었습니다');");
-		response.sendRedirect("Main(common).jsp");
+		response.sendRedirect("Main.jsp");
 	%>
 
 </body>

@@ -68,7 +68,7 @@
 
 	<!--header-->
 	<div class="header">
-		<a href="Con_Main.jsp"><h1 style="color: black;">Room&nbsp;Share</h1></a>
+		<a href="Main.jsp"><h1 style="color: black;">Room&nbsp;Share</h1></a>
 		<div class="menu">
 			<span id="log">logout</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a
 				href="Con_Appo.jsp">이용내역</a></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a
@@ -80,7 +80,7 @@
 			else {
 	%>
 	<div class="header">
-		<a href="Sup_Main.jsp"><h1 style="color: black;">Room&nbsp;Share</h1></a>
+		<a href="Main.jsp"><h1 style="color: black;">Room&nbsp;Share</h1></a>
 		<div class="menu">
 			<span id="log">logout</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a
 				href="Sup_New_Posting.jsp">새글쓰기</a></span>
