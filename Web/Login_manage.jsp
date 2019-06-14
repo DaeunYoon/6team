@@ -65,10 +65,8 @@
 			else {
 				loginManager.setSession(session, id);
 				session.setAttribute("ID", id);
-				if (st == 1)
-					response.sendRedirect("Con_Main.jsp");
-				else if (st == 0)
-					response.sendRedirect("Sup_Main.jsp");
+				if (st == 1 || st == 0)
+					response.sendRedirect("Main.jsp");
 				else
 					System.out.println("error!");
 			}
