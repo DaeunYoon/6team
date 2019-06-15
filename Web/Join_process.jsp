@@ -38,7 +38,7 @@
 		
 		if(!rs.next()) {
 
-			sql = "INSERT INTO Account (ID, PW, Username, state, tel) Values ('" + id + "', '" + pw + "', '" + name
+			sql = "INSERT INTO Account (ID, PW, Username, state, PhoneNumber) Values ('" + id + "', '" + pw + "', '" + name
 					+ "', '" + stt + "', '" + tel + "')";
 
 			System.out.println(sql);
@@ -61,7 +61,7 @@
 
 	<script>
 		alert("회원가입이 완료되었습니다.");
-		location.href = "Main(common).jsp";
+		location.href = "Login.jsp";
 	</script>
 
 </body>
