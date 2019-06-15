@@ -3,7 +3,7 @@ CREATE TABLE `account` (
   `PW` varchar(45) NOT NULL,
   `Username` varchar(45) NOT NULL,
   `state` tinyint(3) unsigned zerofill NOT NULL,
-  `report` int(10) unsigned zerofill NOT NULL,
+  `report` int(10) unsigned zerofill NOT NULL DEFAULT '0000000000',
   `evaluation` double unsigned zerofill NOT NULL,
   `PhoneNumber` varchar(45) NOT NULL,
   PRIMARY KEY (`ID`)
