@@ -19,7 +19,7 @@ CREATE TABLE `review` (
   PRIMARY KEY (`Rnum`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE `room_info` (
+select * from account where id = 'abc@naver.com';CREATE TABLE `room_info` (
   `RoomID` int(11) NOT NULL,
   `cost` int(11) NOT NULL,
   `s_date` date NOT NULL,
@@ -31,6 +31,7 @@ CREATE TABLE `room_info` (
   `add4` varchar(45) NOT NULL,
   `hostID` varchar(45) NOT NULL,
   `room_title` varchar(45) NOT NULL,
+  `max_p` int(11) NOT NULL,
   PRIMARY KEY (`RoomID`),
   KEY `fk_Room_Info_Account1_idx` (`hostID`),
   CONSTRAINT `fk_Room_Info_Account1` FOREIGN KEY (`hostID`) REFERENCES `account` (`ID`)
