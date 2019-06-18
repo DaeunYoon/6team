@@ -65,7 +65,7 @@
 			<span id="log">logout</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a
 				href="Sup_New_Posting.jsp">새글쓰기</a></span>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a
-				href="Sup_Res_History.jsp">이용내역</a></span>
+				href="App_History.jsp">이용내역</a></span>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a
 				href="Info_Manage.jsp">개인정보관리</a></span>
 		</div>

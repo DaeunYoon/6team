@@ -70,9 +70,10 @@
 	<div class="header">
 		<a href="Main.jsp"><h1 style="color: black;">Room&nbsp;Share</h1></a>
 		<div class="menu">
-			<span id="log">logout</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a
-				href="Con_Appo.jsp">이용내역</a></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a
-				href="Con_Info_Manage.jsp">개인정보관리</a></span>
+			<span id="log">logout</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<span><a href="Con_Appo.jsp">예약신청내역</a></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<span><a href="App_History.jsp">완료내역</a></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<span><a href="Info_Manage.jsp">개인정보관리</a></span>
 		</div>
 	</div>
 	<%
@@ -85,7 +86,7 @@
 			<span id="log">logout</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a
 				href="Sup_New_Posting.jsp">새글쓰기</a></span>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a
-				href="Sup_Res_History.jsp">이용내역</a></span>
+				href="App_History.jsp">이용내역</a></span>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a
 				href="Sup_Info_Manage.jsp">개인정보관리</a></span>
 		</div>

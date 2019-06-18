@@ -15,10 +15,12 @@ function checkpw()
 	if(pw != pwch) {
 		alert("비밀번호가 일치하지 않습니다.");
 		document.getElementById("PW").focus();
+		document.getElementById("state").value = "0";
 	}
 	else {
 		alert("비밀번호가 일치합니다.");
 		document.getElementById("name").focus();
+		document.getElementById("state").value = "1";
 	}
 
 }
@@ -50,9 +52,10 @@ function checkpw()
 				<h3>Join</h3>
 				<div>
 					<p>
+					<input type="hidden" id = "state" name = "state" value="0">
 						<input type="text" name="ID" placeholder="ID (email)" required>
-						<input type="password" id="PW" name="PW" placeholder="PW" required>
-						<input type="password" id="PWch" name="PWch" placeholder="PW CHECK" required>
+						<input type="password" id="PW" name="PW" placeholder="PW" maxlength = "15" required>
+						<input type="password" id="PWch" name="PWch" maxlength = "15" placeholder="PW CHECK" required>
 					</p>
 						<button class="btn" type="button" onclick = "checkpw()">비밀번호 확인</button>
 					
@@ -69,7 +72,7 @@ function checkpw()
 					</p>
 					<br>
 					<p>
-						<button class="btn" type="submit" >입력</button>
+						<button class="btn" type="submit">입력</button>
 					</p>
 				</div>
 			</fieldset>

@@ -42,7 +42,7 @@
 				"1234");
 
 		String title = null, host = null, addr = null;
-		int price = 0, broom = 0, kit = 0, inter = 0, park = 0;
+		int price = 0, broom = 0, kit = 0, inter = 0, park = 0, max = 0;
 		double score = 0;
 
 		String rid = request.getParameter("rid");
@@ -56,7 +56,7 @@
 		int st = 0;
 		if(rs.next())
 			st = rs.getInt("state");
-		sql = "select room_title, hostID, cost, add1, add2, add3, add4, roomscore from room_info where roomid = '"
+		sql = "select room_title, hostID, cost, add1, add2, add3, add4, roomscore, max_p from room_info where roomid = '"
 				+ rid + "'";
 		stmt = con.createStatement();
 		rs = stmt.executeQuery(sql);
@@ -71,6 +71,7 @@
 					addr += rs.getString("add" + i) + " ";
 			price = rs.getInt("cost");
 			score = rs.getDouble("roomscore");
+			max = rs.getInt("max_p");
 
 		}
 
@@ -109,15 +110,14 @@
 		}
 	if(st == 1) {
 	%>
-
-
 	<!--header-->
 	<div class="header">
 		<a href="Main.jsp"><h1 style="color: black;">Room&nbsp;Share</h1></a>
 		<div class="menu">
-			<span id="log">logout</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a
-				href="Con_Appo.jsp">이용내역</a></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a
-				href="Con_Info_Manage.jsp">개인정보관리</a></span>
+			<span id="log">logout</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<span><a href="Con_Appo.jsp">예약신청내역</a></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<span><a href="App_History.jsp">완료내역</a></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<span><a href="Info_Manage.jsp">개인정보관리</a></span>
 		</div>
 	</div>
 	<%
@@ -130,7 +130,7 @@
 			<span id="log">logout</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a
 				href="Sup_New_Posting.jsp">새글쓰기</a></span>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a
-				href="Sup_Res_History.jsp">이용내역</a></span>
+				href="App_History.jsp">이용내역</a></span>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a
 				href="Sup_Info_Manage.jsp">개인정보관리</a></span>
 		</div>
@@ -158,7 +158,10 @@
 						<a href = "Look_Acco.jsp?uid=<%=host%>" style = "font-decoration : none;" 
 				onmouseover="this.style.color='gray'" onmouseout="this.style.color='black'"><%=host%></a>
 					</div>
-
+					
+					<div style="margin-top: 24px;">
+						최대 인원 <%=max %>	 명				
+					</div>
 
 					<div style="margin-top: 24px;"><%=addr%></div>
 
@@ -199,11 +202,17 @@
 					</div>
 				</div>
 
-<%if(st == 1) { %>
+				<%if(st == 1) { %>
 				<form action="" method="post">
 					<fieldset class="roon_info_contents_right" style="">
 						<div>
-							게스트 <input type="text" placeholder="인원수" name="people"> <br>
+							게스트 <select name="people"> 
+							<%
+							for(int i = 0; i < max; i++)
+								out.println("<option value = '"+max+"'>"+max+"</option>");
+							%>
+							</select>
+							<br>
 							<br>
 						</div>
 
