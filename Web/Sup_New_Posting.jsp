@@ -83,6 +83,11 @@
 							required /></td>
 					</tr>
 					<tr>
+						<th>수용 인원 :</th>
+						<td><input type="text" placeholder="최대 수용인원을 입력하세요. " name="max"
+							required /></td>
+					</tr>
+					<tr>
 						<th>침실수 :</th>
 						<td><input type="text" placeholder="침실수를 입력하세요. " name="bedroom"
 							required /></td>

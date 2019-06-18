@@ -67,7 +67,7 @@
 		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb?serverTimezone=UTC", "root",
 				"1234");
 
-		request.setCharacterEncoding("EUC-KR");
+		request.setCharacterEncoding("utf-8");
 		
 		String sql = "select max(RoomID) from room_info";
 		Statement stmt = null;
@@ -94,10 +94,10 @@
 		String price = request.getParameter("price");
 		String sdate = request.getParameter("start_date");
 		String edate = request.getParameter("end_date");
-		
-		sql = "insert into room_info(RoomID, cost, s_date, e_date, add1, add2, add3, add4, hostID, room_title) values ('" + rid + "', '"
+		String max = request.getParameter("max");
+		sql = "insert into room_info(RoomID, cost, s_date, e_date, add1, add2, add3, add4, hostID, room_title, max_p) values ('" + rid + "', '"
 				+ price +"', '" + sdate +"', '" + edate +"', '" + adr1 +"', '" + adr2 +"', '" +adr3 +"', '" +adr4 +"', '" + Id +"', '" 
-				+ title +"')";
+				+ title +"', '"+ max +"')";
 		
 		PreparedStatement pstmt = null;
 		pstmt = con.prepareStatement(sql);
@@ -118,7 +118,7 @@
 
 	<script>
 	alert("정상적으로 등록되었습니다.");
-	location.href = "Sup_Main.jsp";
+	location.href = "Main.jsp";
 	</script>
 	
 </body>
