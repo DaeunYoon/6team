@@ -23,6 +23,23 @@
 		}
 	}
 	
+	function checkpw()
+	{
+		var pw = document.getElementById('PW').value;
+		var pwch = document.getElementById('PWch').value;
+		
+		if(pw != pwch) {
+			alert("비밀번호가 일치하지 않습니다.");
+			document.getElementById("PW").focus();
+			document.getElementById("state").value = "0";
+		}
+		else {
+			alert("비밀번호가 일치합니다.");
+			document.getElementById("name").focus();
+			document.getElementById("state").value = "1";
+		}
+
+	}
 </script>
 <title>RoomShare</title>
 </head>
