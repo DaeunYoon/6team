@@ -20,7 +20,6 @@
 		//확인
 		if (conf) {
 			location.href = "logout.jsp";
-
 		}
 		//취소
 		else {
@@ -71,11 +70,12 @@
 	<div class="header">
 		<a href="Main.jsp"><h1 style="color: black;">Room&nbsp;Share</h1></a>
 		<div class="menu">
-			<span id="log">logout</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a
-				href="Con_Appo.jsp">이용내역</a></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a
-				href="Info_Manage.jsp">개인정보관리</a></span>
+			<span id="log">logout</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<span><a href="Con_Appo.jsp">예약신청내역</a></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<span><a href="App_History.jsp">완료내역</a></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<span><a href="Info_Manage.jsp">개인정보관리</a></span>
 		</div>
-	</div>
+	</div>>
 
 	<!--center-->
 	<div class="container">
@@ -101,7 +101,6 @@
 				Statement st2 = con.createStatement();
 				ResultSet rs2 = st2.executeQuery(sql2);
 				rs2 = st2.executeQuery(sql);
-
 				String rname = null;
 				
 				//get room title
@@ -137,7 +136,6 @@
 					Statement st2 = con.createStatement();
 					ResultSet rs2 = st2.executeQuery(sql2);
 					rs2 = st2.executeQuery(sql);
-
 					String rname = null;
 					
 					//get room title
@@ -159,65 +157,6 @@
 				
 			</tbody>
 		</table>
-
-
-
-			<p style="margin-top: 150px;">완료내역</p>
-			<table border="0" cellpadding="0" cellspacing="0">
-				<colgroup>
-					<col width="112px">
-					<col width="auto">
-					<col width="150px">
-					<col width="190px">
-				</colgroup>
-
-				<tbody>
-					<tr>
-						<th>날짜</th>
-						<th>방정보</th>
-						<th>공급자</th>
-						<th>비고</th>
-					</tr>
-					<tr>
-						<td>2019-03-02</td>
-						<td>2</td>
-						<td>3</td>
-						<td><button type="button" style="margin-right: 5px;">후기</button>
-							<button type="button" value="공급자" name="공급자"
-								onclick="notification()">신고</button></td>
-					</tr>
-					<tr>
-						<td>24</td>
-						<td>2</td>
-						<td>–</td>
-						<td><button type="button" style="margin-right: 5px;">후기</button>
-							<button type="button" value="공급자" name="공급자"
-								onclick="notification()">신고</button></td>
-					</tr>
-					<tr>
-						<td>기준</td>
-						<td>일</td>
-						<td>–</td>
-						<td><button type="button" style="margin-right: 5px;">후기</button>
-							<button type="button" value="daeun" name="reser"
-								onclick="location.href = 'notifi.jsp?reser=daeun'">신고하기</button>
-					</tr>
-					<tr>
-						<td>1개</td>
-						<td>2일</td>
-						<td>–</td>
-						<td><button type="button" style="margin-right: 5px;">후기</button>
-							<button type="button" value="daeun" name="reser"
-								onclick="location.href = 'notifi.jsp?reser=daeun'">신고하기</button>
-					</tr>
-				</tbody>
-			</table>
-
-		</div>
-	</div>
-
-
-
 
 	<script>
 		document.getElementById("log").addEventListener("click", logout);

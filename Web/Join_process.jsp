@@ -17,13 +17,15 @@
 		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb?serverTimezone=UTC", "root",
 				"1234");
 
+		
 		String id = request.getParameter("ID");
 		String pw = request.getParameter("PW");
 		String name = request.getParameter("name");
-
+		String s = request.getParameter("state");
 		int stt = 0;//공급자
 		String st = request.getParameter("type");
 
+		System.out.println(s);
 		if (st.equals("consumer"))
 			stt = 1; //소비자
 
@@ -35,7 +37,14 @@
 		pstmt.setString(1, id);
 		ResultSet rs = null;
 		rs = pstmt.executeQuery();
-		
+		if(s.equals("0")){
+			%>
+			<script>
+			alert("비밀번호와 비밀번호 확인을 해주십시오.");
+			location.href="Join.jsp";
+			</script>
+			<% 
+		}
 		if(!rs.next()) {
 
 			sql = "INSERT INTO Account (ID, PW, Username, state, PhoneNumber) Values ('" + id + "', '" + pw + "', '" + name

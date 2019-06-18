@@ -25,7 +25,7 @@
 
 		//check input id and pw
 		if (id == "" || pw == "") {
-			out.println("<script>alert('ID와 PW를 입력하세요!'); location.href='Main(common).jsp'</script>");
+			out.println("<script>alert('ID와 PW를 입력하세요!'); location.href='Login.jsp'</script>");
 		}
 
 		//check id and pw are correct
@@ -58,7 +58,7 @@
 				%>
 				<script>
 				alert('다섯번이상 경고를 받은 회원은 로그인할 수 없습니다.');
-				location.href('Main(common).jsp');
+				location.href('Login.jsp');
 				</script>
 				<%
 			} 
@@ -73,7 +73,7 @@
 		} 
 		else {
 			//login fail
-			out.println("<script>alert('Id or Password Error !'); location.href='Main(common).jsp'</script>");
+			out.println("<script>alert('Id or Password Error !'); location.href='Login.jsp'</script>");
 		}
 
 		stmt.close();
