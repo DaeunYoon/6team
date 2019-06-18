@@ -54,7 +54,13 @@
 	<script>
 		alert("신고되었습니다.");
 		location.href = 'App_History.jsp';
-
+		function expireSession()
+		{
+			alert("로그인 시간이 만료되었습니다. 다시 로그인해주세요");
+			location.href = "logout.jsp";
+			session.invalidate();
+		}
+		setTimeout('expireSession()', <%= request.getSession().getMaxInactiveInterval() * 1 %>);
 	</script>
 
 </body>
