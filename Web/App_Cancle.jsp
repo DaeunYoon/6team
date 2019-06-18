@@ -42,7 +42,14 @@
 	%>
 
 	location.href='Con_Appo.jsp'
-
+	
+	function expireSession()
+	{
+		alert("로그인 시간이 만료되었습니다. 다시 로그인해주세요");
+		location.href = "Login.jsp";
+		session.invalidate();
+	}
+	setTimeout('expireSession()', <%= request.getSession().getMaxInactiveInterval() * 60 %>);
 	</script>
 	
 

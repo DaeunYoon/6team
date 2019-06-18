@@ -12,7 +12,8 @@
 <link href="css/style1.css" rel="stylesheet" type="text/css">
 <link href="css/sup_style.css" rel="stylesheet" type="text/css">
 <script>
-	function logout() {
+	function logout()
+	{
 		var conf = confirm("logout하시겠습니까 ? ");
 		//확인
 		if (conf) {
@@ -24,6 +25,14 @@
 			//이전으로 돌아가기
 		}
 	}
+	
+	function expireSession()
+	{
+		alert("로그인 시간이 만료되었습니다. 다시 로그인해주세요");
+		location.href = "Login.jsp";
+		session.invalidate();
+	}
+	setTimeout('expireSession()', <%= request.getSession().getMaxInactiveInterval() * 60 %>);
 </script>
 <title>RoomShare</title>
 </head>
