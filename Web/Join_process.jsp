@@ -17,7 +17,6 @@
 		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb?serverTimezone=UTC", "root",
 				"1234");
 
-		
 		String id = request.getParameter("ID");
 		String pw = request.getParameter("PW");
 		String name = request.getParameter("name");
@@ -25,46 +24,53 @@
 		int stt = 0;//공급자
 		String st = request.getParameter("type");
 
-		System.out.println(s);
-		if (st.equals("consumer"))
-			stt = 1; //소비자
+		//이메일 양식확인
+		String ns = request.getParameter("ns");
 
-		String tel = request.getParameter("tel");
+		if (ns.equals("0")) {
+			out.println("<script> alert('이메일양식이 올바르지않습니다.'); location.href = Join.jsp; </script>");
+		} else {
+			System.out.println(s);
+			if (st.equals("consumer"))
+				stt = 1; //소비자
 
-		String sql = "select * from Account where id =?";
-		PreparedStatement pstmt = null;
-		pstmt = con.prepareStatement(sql);
-		pstmt.setString(1, id);
-		ResultSet rs = null;
-		rs = pstmt.executeQuery();
-		if(s.equals("0")){
-			%>
-			<script>
-			alert("비밀번호와 비밀번호 확인을 해주십시오.");
-			location.href="Join.jsp";
-			</script>
-			<% 
-		}
-		if(!rs.next()) {
+			String tel = request.getParameter("tel");
 
-			sql = "INSERT INTO Account (ID, PW, Username, state, PhoneNumber) Values ('" + id + "', '" + pw + "', '" + name
-					+ "', '" + stt + "', '" + tel + "')";
-
-			System.out.println(sql);
-
+			String sql = "select * from Account where id =?";
+			PreparedStatement pstmt = null;
 			pstmt = con.prepareStatement(sql);
-			pstmt.execute();
+			pstmt.setString(1, id);
+			ResultSet rs = null;
+			rs = pstmt.executeQuery();
+			if (s.equals("0")) {
+	%>
+	<script>
+		alert("비밀번호와 비밀번호 확인을 해주십시오.");
+		location.href = "Join.jsp";
+	</script>
+	<%
+		} 
+			else { //비밀번호 확인안한경우
+				if (!rs.next()) {
+
+					sql = "INSERT INTO Account (ID, PW, Username, state, PhoneNumber) Values ('" + id + "', '" + pw
+							+ "', '" + name + "', '" + stt + "', '" + tel + "')";
+
+					System.out.println(sql);
+
+					pstmt = con.prepareStatement(sql);
+					pstmt.execute();
+				} else {
+	%>
+	<script>
+		alert("사용중인 아이디가 있습니다.");
+		location.href = "Join.jsp";
+	</script>
+	<%
 		}
-		else{
-			%>
-			<script>
-			alert("사용중인 아이디가 있습니다.");
-			location.href="Join.jsp";
-			</script>
-			<%
+			}
+			pstmt.close();
 		}
-		
-		pstmt.close();
 		con.close();
 	%>
 
