@@ -119,7 +119,7 @@
 					int price = 0;
 					double score = 0;
 
-					sql = "select RoomID,room_title, hostID, cost, add1, add2, add3, add4, roomscore from room_info";
+					sql = "select RoomID,room_title, hostID, cost, add1, add2, add3, add4, roomscore from room_info order by room_title";
 					stmt = con.createStatement();
 					rs = null;
 					rs = stmt.executeQuery(sql);
@@ -151,7 +151,7 @@
 	<%}
 		
 		else {
-			sql = "select roomID from room_info where hostID = '" + Id + "'" ;
+			sql = "select roomID from room_info where hostID = '" + Id + "' order by StartDate" ;
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(sql);
 			System.out.println(sql);
