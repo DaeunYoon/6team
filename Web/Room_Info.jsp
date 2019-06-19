@@ -14,8 +14,6 @@
 <link href="css/sup_style.css" rel="stylesheet" type="text/css">
 
 <script>
-var day = new Date();//오늘 날자(아래 모든 함수에 적용됨)
-	
 	function logout() {
 		var conf = confirm("logout하시겠습니까 ? ");
 		//확인
@@ -27,16 +25,6 @@ var day = new Date();//오늘 날자(아래 모든 함수에 적용됨)
 		else {
 			//이전으로 돌아가기
 		}
-	}
-	
-	
-	function nextday(n) {//x일후 날자 구하기
-	    var rtn = new Date(day.getTime());
-	    rtn.setDate(rtn.getDate()+n);
-	    return rtn;
-	}
-	function datediff(date1, date2) {//두 날자객체의 차이(=일) 구하기
-	    return Math.round((date2.getTime()-date1.getTime())/(1000*60*60*24));
 	}
 	
 	function expireSession()
@@ -78,11 +66,11 @@ var day = new Date();//오늘 날자(아래 모든 함수에 적용됨)
 		int st = 0;
 		if (rs.next())
 			st = rs.getInt("state");
-		sql = "select room_title, hostID, cost, add1, add2, add3, add4, roomscore, max_p from room_info where roomid = '"
-				+ rid + "'";
+		sql = "select r.RoomID, r.room_title, r.hostID, r.cost, r.add1, r.add2, r.add3, r.add4, r.max_p, a.evaluation from room_info r, account a where r.roomid = '"+rid+"' AND a.ID = r.hostID order by room_title";	
 		stmt = con.createStatement();
 		rs = stmt.executeQuery(sql);
 
+		System.out.println(sql);
 		if (rs.next()) {
 			title = rs.getString("room_title");
 			host = rs.getString("hostID");
@@ -92,7 +80,7 @@ var day = new Date();//오늘 날자(아래 모든 함수에 적용됨)
 				else
 					addr += rs.getString("add" + i) + " ";
 			price = rs.getInt("cost");
-			score = rs.getDouble("roomscore");
+			score = rs.getDouble("evaluation");
 			max = rs.getInt("max_p");
 
 		}
@@ -121,19 +109,8 @@ var day = new Date();//오늘 날자(아래 모든 함수에 적용됨)
 
 		}
 
-		sql = "select * from room_option where roomid = '" + rid + "'";
-		stmt = con.createStatement();
-		rs = stmt.executeQuery(sql);
+	
 
-		if (rs.next()) {
-			broom = rs.getInt("BedNumber");
-			kit = rs.getInt("Kitchen");
-			inter = rs.getInt("internet");
-			park = rs.getInt("parking");
-		}
-
-		sql = "select * from room_reserve_info where roomid = '" + rid + "'";
-		rs = stmt.executeQuery(sql);
 
 		
 				
@@ -173,14 +150,14 @@ var day = new Date();//오늘 날자(아래 모든 함수에 적용됨)
 		}
 		
 		if(d[1] == 1 || d[1] == 3 || d[1] == 5 || d[1] == 7 || d[1] == 8 || d[1] == 10 || d[1] == 12){
-			if(d[2] > 32 || d[2] < 0){
+			if(d[2] > 31 || d[2] < 0){
 				alert("날짜를 다시 확인하십시오.");
 				return;
 
 			}
 		}
 		else if(d[1] == 3 || d[1] == 4 || d[1] == 6 || d[1] == 9 || d[1] == 11){
-			if(d[2] > 31 || d[2] < 0){
+			if(d[2] > 30 || d[2] < 0){
 				alert("날짜를 다시 확인하십시오.");
 				return;
 			}
@@ -411,7 +388,7 @@ var day = new Date();//오늘 날자(아래 모든 함수에 적용됨)
 							<input type="hidden" value="<%=rid%>" name="rid"> 게스트 
 							<select name="people">
 								<%
-									for (int i = 1; i < max; i++)
+									for (int i = 1; i <= max; i++)
 											out.println("<option value = '" + i + "'>" + i + "</option>");
 								%>
 							</select> 

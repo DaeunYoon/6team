@@ -35,21 +35,195 @@
 			ch = false;
 		}
 		else {
-			if(isNaN(b.value)) {
-				alert("침실수에는 숫자를 입력하세요");
+			if(a.value <= 0) {
+				alert("수용 인원은 한명이상입니다 ");
 				ch = false;
 			}
-			else{
-				if(isNaN(c.value)) {
-					alert("일박요금에는 숫자를 입력하세요");
-					ch = false;
-				}
-			}
 		}
+		if(isNaN(b.value)) {
+			alert("침실수에는 숫자를 입력하세요");
+			ch = false;
+		}
+		else {
+			if(b.value <= 0) {
+				alert("침실수는 한개이상입니다 ");
+				ch = false;
+			}			
+		}
+		
+		if(isNaN(c.value)) {
+			alert("일박요금에는 숫자를 입력하세요");
+			ch = false;
+		}
+		else {
+			if(c.value < 5000) {
+				alert("가격은 5000원 이상입니다 ");
+				ch = false;
+			}			
+		}
+		
 		if(ch)
 			return true;
 		else
 			return false;
+	}
+	
+	var ch1 = 0, ch2 = 0;
+	function checkform()
+	{
+		if(ch1 == 0 || ch2 == 0) {
+			alert("날짜를 확인하세요");
+			return false;
+		}
+		return true;
+	}
+	
+	function checkin()
+	{
+		var d = document.getElementById("in").value;
+		
+		/*오늘 날짜 받아오기*/
+		var dt = new Date();
+   	 	dt.setMonth(dt.getMonth() + 1 );
+    	var year = dt.getFullYear();
+    	var month = dt.getMonth();
+    	var day = dt.getDate();
+		
+		d = d.split('-');
+		
+		/*날짜 형식 확인*/
+		if(isNaN(d[0])){
+			alert("날짜 형식은 0000-00-00 입니다 (연, 월, 일)");
+			document.getElementById("out").value = null;
+			return;
+		}
+		
+		if(d[1] == 1 || d[1] == 3 || d[1] == 5 || d[1] == 7 || d[1] == 8 || d[1] == 10 || d[1] == 12){
+			if(d[2] > 32 || d[2] < 0){
+				alert("날짜를 다시 확인하십시오.");
+				return;
+
+			}
+		}
+		else if(d[1] == 3 || d[1] == 4 || d[1] == 6 || d[1] == 9 || d[1] == 11){
+			if(d[2] > 31 || d[2] < 0){
+				alert("날짜를 다시 확인하십시오.");
+				return;
+			}
+		}
+		else {
+			alert("날짜를 다시 확인하십시오.");
+			return;
+		}
+		
+		if(d[1] == 2){
+			if( (d[0]%4) && ((d[0]%100) || (d[0] % 400)) ){
+				if(d[2] > 29 || d[2] < 0){
+					alert("날짜를 다시 확인하십시오.");
+					return;
+					}
+			}
+			else{
+				if(d[2] > 28 || d[2] < 0){
+					alert("날짜를 다시 확인하십시오.");
+					return;
+				}
+			}
+		}
+		
+		if(year > d[0]) {
+			alert("오늘 날짜 이전은 선택할 수 없습니다.");
+			return;
+		}
+		else if(year == d[0]) {
+			if(month > d[1]) {
+				alert("오늘 날짜 이전은 선택할 수 없습니다.");
+					return;
+			}
+			else if(month == d[1]) {
+				if(day > d[2]) {
+					alert("오늘 날짜 이전은 선택할 수 없습니다.");
+					return;
+				}
+			}
+		}
+		
+		ch1 = 1;
+	}
+	
+	function checkout()
+	{
+		var d = document.getElementById("out").value;
+		var ind = document.getElementById("in").value;
+		d = d.split('-');
+		//alert(d[0] +"-" +d[1] +"-"+d[2]);
+		
+		if(!ind) {
+			alert("시작 날짜부터 입력해 주세요");
+			document.getElementById("out").value = null;
+			document.getElementById("out").focus();
+			return;
+		}
+		ind = ind.split('-');
+		
+		if(isNaN(d[0])){
+			alert("날짜 형식은 0000-00-00 입니다 (연, 월, 일)");
+			document.getElementById("out").value = null;
+			return;
+		}
+		
+		if(d[1] == 1 || d[1] == 3 || d[1] == 5 || d[1] == 7 || d[1] == 8 || d[1] == 10 || d[1] == 12){
+			if(d[2] > 31 || d[2] < 0){
+				alert("날짜를 다시 확인하십시오.");
+				return;
+
+			}
+		}
+		else if(d[1] == 3 || d[1] == 4 || d[1] == 6 || d[1] == 9 || d[1] == 11){
+			if(d[2] > 30 || d[2] < 0){
+				alert("날짜를 다시 확인하십시오.");
+				return;
+			}
+		}
+		else {
+			alert("날짜를 다시 확인하십시오.");
+			return;
+		}
+		
+		if(d[1] == 2){
+			if( (d[0]%4) && ((d[0]%100) || (d[0] % 400)) ){
+				if(d[2] > 29 || d[2] < 0){
+					alert("날짜를 다시 확인하십시오.");
+					return;
+					}
+			}
+			else{
+				if(d[2] > 28 || d[2] < 0){
+					alert("날짜를 다시 확인하십시오.");
+					return;
+				}
+			}
+		}
+		
+		/*check-in 날짜와 비교*/
+		if(ind[0] > d[0]) {
+			alert("종료 날짜는 시작 날짜보다 빠를 수 없습니다.");
+			return;
+		}
+		else if(ind[0] == d[0]) {
+			if(ind[1] > d[1]) {
+				alert("종료 날짜는 시작 날짜보다 빠를 수 없습니다.");
+				return;
+			}
+			else if(ind[1] == d[1]) {
+				if(ind[2] >= d[2]) {
+					alert("종료 날짜는 시작 날짜보다 빠를 수 없습니다.");
+					return;
+				}
+			}
+		}
+		
+		ch2 = 1;
 	}
 	
 	function expireSession()
@@ -145,8 +319,12 @@
 					</tr>
 					<tr>
 						<th>대여가능날짜 :</th>
-						<td><input type="date" name="start_date" required>
-						 ~ <input type="date" name="end_date" required>
+						<td>
+						<input type="text" name="start_date" id="in"
+								onchange="checkin()" placeholder="year-month-day" required>
+								~
+						<input type="text" name="end_date" id="out"
+								onchange="checkout()" placeholder="year-month-day" required>
 						</td>
 					</tr>
 					<tr>

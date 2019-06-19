@@ -65,15 +65,23 @@
 		if (pw != pwch) {
 			alert("비밀번호가 일치하지 않습니다.");
 			document.getElementById("PW").focus();
-			document.getElementById("state").value = "0";
+			ck = 0;
 		} else {
 			alert("비밀번호가 일치합니다.");
 			document.getElementById("name").focus();
-			document.getElementById("state").value = "1";
 		}
 	}
 	
-	
+	function checkForm()
+	{
+		if(ck == 1 && ch2 ==1){
+			return true;
+		}
+		else {
+			alert("비밀번호 확인이 일치하지 않습니다");
+			return false;
+		}		
+	}
 	
 	function expireSession()
 	{
@@ -116,17 +124,7 @@
 			
 			if(st == 1) {
 	%>
-	<script>
-	function checkForm()
-	{
-		if(ck == 1 && ch2 ==1)
-			return true;
-		else {
-			alert("비밀번호 확인이 일치하지 않습니다");
-			return false;
-		}		
-	}
-</script>
+
 	<!--header-->
 	<div class="header">
 		<a href="Main.jsp"><h1 style="color: black;">Room&nbsp;Share</h1></a>

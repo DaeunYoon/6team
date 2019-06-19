@@ -62,10 +62,10 @@
 			if(st.equals("consumer")) {
 				stt = 1; //소비자
 			}
-			sql = "Update account set Username ='"+name+"', PhoneNumber = '" +tel+ "' Where ID = '"+id+"'";
+			sql = "Update account set Username ='"+name+"', PhoneNumber = '" +tel+ "' Where ID = '"+Id+"'";
 		}
 		else {
-			sql = "Update account set PW ='"+pw+"'";
+			sql = "Update account set PW ='"+pw+"' where ID = '" + Id +"'";
 		}
 		
 		PreparedStatement pstmt = null;
