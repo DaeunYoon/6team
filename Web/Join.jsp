@@ -33,8 +33,6 @@
 		}
 		
 		for (i = 0; i < pw.length; i++) {
-			alert(pw.charAt(i));
-
 			if ((pw.charCodeAt(i) < 0x5A && pw.charCodeAt(i) > 0x2f)) {
 				ck2 = 1;
 				break;
