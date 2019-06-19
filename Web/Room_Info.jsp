@@ -49,7 +49,7 @@
 		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb?serverTimezone=UTC", "root",
 				"1234");
 
-		String title = null, host = null, addr = null;
+		String title = null, host = null, addr = null, cont = null;
 		int price = 0, broom = 0, kit = 0, inter = 0, park = 0, max = 0;
 		double score = 0;
 
@@ -92,6 +92,7 @@
 			kit = rs.getInt("Kitchen");
 			inter = rs.getInt("internet");
 			park = rs.getInt("parking");
+			cont = rs.getString("content");
 		}
 		if (rs.next()) {
 			title = rs.getString("room_title");
@@ -174,7 +175,9 @@
 					<div style="margin-top: 24px;"><%=addr%></div>
 
 					<div style="margin-top: 24px">
-						기타정보 <br> <span>침실수 : <%=broom%></span> <span>부엌</span>
+						기타정보 <br> 
+						<div>내용 : <%=cont%></div>
+						<span>침실수 : <%=broom%></span> <span>부엌</span>
 						<%
 							if (kit == 1)
 								out.println("O");
@@ -210,7 +213,7 @@
 					</div>
 				</div>
 
-				<%if(st == 1) { %>
+				<% if(st == 1) { %>
 				<form action="" method="post">
 					<fieldset class="roon_info_contents_right" style="">
 						<div>
@@ -231,14 +234,16 @@
 			</div>
 
 			<div style="margin: auto; text-align: center">
-				<button style="width: 50%; margin: auto;" type="submit">예약요청</button>
+				<button style="width: 50%; margin: auto;" type="submit" >예약요청</button>
 			</div>
 		</div>
 
 	</div>
 	</fieldset>
 	</form>
-<%} %>
+<%
+}
+				%>
 
 	<script>
 		document.getElementById("log").addEventListener("click", logout);
