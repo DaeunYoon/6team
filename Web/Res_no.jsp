@@ -41,7 +41,7 @@
 		out.println("alert('다시 시도해 주세요');");
 	%>
 
-	location.href='Sup_Main.jsp'
+	location.href='Main.jsp'
 		function expireSession()
 	{
 		alert("로그인 시간이 만료되었습니다. 다시 로그인해주세요");

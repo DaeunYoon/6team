@@ -99,6 +99,7 @@
 					<th>날짜</th>
 					<th>방이름</th>
 					<th>방주인</th>
+					<th>별점</th>
 					<th>신고하기</th>
 				</tr>
 				<%
@@ -128,9 +129,19 @@
 				<a href = "Room_Info.jsp?rid=<%=rid%>" style = "font-decoration : none;" 
 				onmouseover="this.style.color='gray'" onmouseout="this.style.color='black'"><%=rname%></a></td> 
 				<td> <a href = "Look_Acco.jsp?uid=<%=host%>" style = "font-decoration : none;" 
-				onmouseover="this.style.color='gray'" onmouseout="this.style.color='black'"><%=host%></a></td> 
+				onmouseover="this.style.color='gray'" onmouseout="this.style.color='black'"><%=host%></a></td>
+				
+				<td><select name="별점">
+					<%
+						for (int i = 1; i <= 5; i++)
+							out.println("<option value = '" + i + "'>" + i + "</option>");
+					%>
+				</select>
+				<button type="button" value="별점" name="eval" onclick="location.href = 'notifi.jsp?reser='"+ host +"'">별점주기</button>
+				</td>
+			
 				<td><button type="button" value="예약자" name="reser"
-										onclick="location.href = 'notifi.jsp?reser=daeun'">신고하기</button></td>
+										onclick="location.href = 'notifi.jsp?reser='"+ host +"'">신고하기</button></td>
 				</tr>
 				<%
 				}

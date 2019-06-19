@@ -11,8 +11,6 @@ CREATE TABLE `account` (
 
 CREATE TABLE `review` (
   `SendID` varchar(45) NOT NULL,
-  `title` varchar(45) NOT NULL,
-  `contents` longtext NOT NULL,
   `evaluation` int(11) NOT NULL,
   `Rnum` int(11) NOT NULL,
   `RecieverID` varchar(45) NOT NULL,

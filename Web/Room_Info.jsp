@@ -408,13 +408,14 @@ var day = new Date();//오늘 날자(아래 모든 함수에 적용됨)
 					
 					<fieldset class="roon_info_contents_right" style="">
 						<div>
-							<input type="hidden" value="<%=rid%>" name="rid"> 게스트 <select
-								name="people">
+							<input type="hidden" value="<%=rid%>" name="rid"> 게스트 
+							<select name="people">
 								<%
 									for (int i = 1; i < max; i++)
 											out.println("<option value = '" + i + "'>" + i + "</option>");
 								%>
-							</select> <br> <br>
+							</select> 
+							<br> <br>
 						</div>
 
 						<div>
