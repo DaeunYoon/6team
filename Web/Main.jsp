@@ -92,7 +92,6 @@
 			<div class="search">
 				<form name='frm' method='post' action='./Main.jsp'>
 					<select name='sel'>
-						<option value="search_all">전체</option>
 						<option value="search_date">날짜</option>
 						<option value="search_person">인원</option>
 						<option value="search_location">위치</option>
@@ -130,13 +129,14 @@
 					String word = request.getParameter("word");
 					
 					sql = "select RoomID,room_title, hostID, cost, add1, add2, add3, add4, roomscore from room_info order by room_title";	
-					if(sel == null && word == null)
+					if(sel == null || word == null || word == "")
 					{
 						sql = "select RoomID,room_title, hostID, cost, add1, add2, add3, add4, roomscore from room_info order by room_title";
 					}
 					
 					else if(sel.equals("search_date"))
 					{
+						out.println(sel + word);
 						if(word.length() != 21)
 						{
 							out.println("<script>alert('Wrong input'); location.href='Main.jsp';</script>");
@@ -169,7 +169,7 @@
 								out.println("<script>alert('Wrong input'); location.href='Main.jsp';</script>");
 							}
 						}
-						sql = "select RoomID,room_title, hostID, cost, add1, add2, add3, add4, roomscore from room_info where max_p > '" + word +"' order by rooom_title";
+						sql = "select RoomID,room_title, hostID, cost, add1, add2, add3, add4, roomscore from room_info where max_p >= '" + word +"' order by room_title";
 			
 
 						
