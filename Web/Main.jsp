@@ -33,6 +33,18 @@
 		session.invalidate();
 	}
 	setTimeout('expireSession()', <%= request.getSession().getMaxInactiveInterval() * 60 %>);
+	
+	function searchCheck(frm){
+        //검색
+       
+        if(frm.keyWord.value ==""){
+            alert("검색 단어를 입력하세요.");
+            frm.keyWord.focus();
+            return;
+        }
+        frm.submit();      
+    }
+
 </script>
 <title>RoomShare</title>
 </head>
@@ -78,14 +90,14 @@
 	<div class="container">
 		<div class="contents">
 			<div class="search">
-				<form>
-					<select>
-						<option value="search_all">전체</option>
+				<form name='frm' method='post' action='./Main.jsp'>
+					<select name='sel'>
 						<option value="search_date">날짜</option>
 						<option value="search_person">인원</option>
 						<option value="search_location">위치</option>
-					</select> <input type="text">
-					<button type="button" onclick="alert('Hello world')">검색</button>
+					</select> 
+					<input type='text' name='word' value='' placeholder="">
+					<button type='submit'>검색</button>
 				</form>
 			</div>
 		</div>
@@ -100,26 +112,73 @@
 				<caption style="font-weight: bold; font-size: 160%; padding: 5px">방정보</caption>
 				<tread>
 				<tr>
-					
 					<th>방이름</th>
 					<th>가격</th>
 					<th>방주인</th>
 					<th>별점</th>
 					<th>상세정보</th>
-					
 				</tr>
 				</tread>
 				<tbody>
-					
-			
-
-			
 				<%
+					request.setCharacterEncoding("utf-8");
 					String title = null, host = null, addr = null, rid = null;
 					int price = 0;
 					double score = 0;
+					String sel = request.getParameter("sel");
+					String word = request.getParameter("word");
+					
+					sql = "select r.RoomID, r.room_title, r.hostID, r.cost, r.add1, r.add2, r.add3, r.add4, a.evaluation from room_info r, account a where a.ID = r.hostID order by room_title";	
+					if(sel == null || word == null || word == "")
+					{
+						sql = "select r.RoomID, r.room_title, r.hostID, r.cost, r.add1, r.add2, r.add3, r.add4, a.evaluation from room_info r, account a where a.ID = r.hostID order by room_title";
+					}
+					
+					else if(sel.equals("search_date"))
+					{
+						out.println(sel + word);
+						if(word.length() != 21)
+						{
+							out.println("<script>alert('Wrong input'); location.href='Main.jsp';</script>");
+						}
+						
+						else
+							{
+								for(int i = 0; i < word.length(); i++)
+								{
+									if((word.charAt(i) < '0' || word.charAt(i) > '9') && (word.charAt(i) != '-' && word.charAt(i) != ','))
+									{
+										out.println("<script>alert('Wrong input'); location.href='Main.jsp';</script>");
+									}
+								}
+								String s_date = word.substring(0,10);
+								String e_date = word.substring(11,21);
+								out.println(s_date + " " + e_date);
+								sql = "select r.RoomID, r.room_title, r.hostID, r.cost, r.add1, r.add2, r.add3, r.add4, a.evaluation from room_info r, account a where a.ID = r.hostID order AND (s_date >= '" + s_date +"' AND e_date <= '" +e_date+"') by room_title";
+							}
+						
+					}
+						
+					else if(sel.equals("search_person"))
+					{
+						for(int i = 0; i < word.length(); i++)
+						{
+							if(word.charAt(i) < '0' || word.charAt(i) > '9')
+							{
+								out.println("<script>alert('Wrong input'); location.href='Main.jsp';</script>");
+							}
+						}
+						sql = "select r.RoomID, r.room_title, r.hostID, r.cost, r.add1, r.add2, r.add3, r.add4, a.evaluation from room_info r, account a where a.ID = r.hostID AND (max_p >= '" + word +"') order by room_title";
 
-					sql = "select RoomID,room_title, hostID, cost, add1, add2, add3, add4, roomscore from room_info order by room_title";
+						
+					}
+						
+					else if(sel.equals("search_location"))
+					{
+						sql = "select r.RoomID, r.room_title, r.hostID, r.cost, r.add1, r.add2, r.add3, r.add4, a.evaluation from room_info r, account a where a.ID = r.hostID AND (r.add1 like '%" + word + "%' or r.add2 like '%" + word + "%' or r.add3 like '%" + word + "%' or r.add4 like '%" + word + "%') order by room_title";
+					}	
+		
+					
 					stmt = con.createStatement();
 					rs = null;
 					rs = stmt.executeQuery(sql);
@@ -132,7 +191,7 @@
 						for (int i = 1; i < 5; i++)
 							addr += rs.getString("add" + i);
 						price = rs.getInt("cost");
-						score = rs.getDouble("roomscore");
+						score = rs.getDouble("evaluation");
 						
 						out.println("<tr><td><class='room_tit'><strong>" + title + "</strong></td> <td><span class='roomprice'>" + price
 								+ "</span></td> <td><span class='room_host'>" + host + "</span></td> <td><span class='room_score'>" + score
@@ -151,7 +210,7 @@
 	<%}
 		
 		else {
-			sql = "select roomID from room_info where hostID = '" + Id +"'" ;
+			sql = "select roomID from room_info where hostID = '" + Id + "'" ;
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(sql);
 			System.out.println(sql);
