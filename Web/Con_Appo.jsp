@@ -20,6 +20,7 @@
 		//확인
 		if (conf) {
 			location.href = "logout.jsp";
+
 		}
 		//취소
 		else {
@@ -39,14 +40,6 @@
                  alert = "신고가 완료되었습니다.";
         }
     }
-	 
-    function expireSession()
-	{
-		alert("로그인 시간이 만료되었습니다. 다시 로그인해주세요");
-		location.href = "logout.jsp";
-		session.invalidate();
-	}
-	setTimeout('expireSession()', <%= request.getSession().getMaxInactiveInterval() * 60 %>);
 	
 </script>
 <title>RoomShare</title>
@@ -75,6 +68,7 @@
 	%>
 
 	<!--header-->
+<!--header-->
 	<div class="header">
 		<a href="Main.jsp"><h1 style="color: black;">Room&nbsp;Share</h1></a>
 		<div class="menu">
@@ -83,8 +77,8 @@
 			<span><a href="App_History.jsp">완료내역</a></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<span><a href="Info_Manage.jsp">개인정보관리</a></span>
 		</div>
-	</div>>
-
+	</div>
+	
 	<!--center-->
 	<div class="container">
 		<div class="container">
@@ -109,6 +103,7 @@
 				Statement st2 = con.createStatement();
 				ResultSet rs2 = st2.executeQuery(sql2);
 				rs2 = st2.executeQuery(sql);
+
 				String rname = null;
 				
 				//get room title
@@ -144,6 +139,7 @@
 					Statement st2 = con.createStatement();
 					ResultSet rs2 = st2.executeQuery(sql2);
 					rs2 = st2.executeQuery(sql);
+
 					String rname = null;
 					
 					//get room title
@@ -165,6 +161,11 @@
 				
 			</tbody>
 		</table>
+		</div>
+	</div>
+
+
+
 
 	<script>
 		document.getElementById("log").addEventListener("click", logout);
