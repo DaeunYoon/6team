@@ -43,7 +43,7 @@ CREATE TABLE `room_option` (
   `internet` tinyint(4) DEFAULT NULL,
   `parking` tinyint(4) DEFAULT NULL,
   `RoomID` int(11) NOT NULL ,
-  `content` longtext,
+  `content` longtext DEFAULT NULL,
   PRIMARY KEY (`RoomID`),
   KEY `fk_Room_option_Room_Info_idx` (`RoomID`),
   CONSTRAINT `fk_Room_option_Room_Info` FOREIGN KEY (`RoomID`) REFERENCES `room_info` (`RoomID`)
