@@ -24,7 +24,6 @@ select * from account where id = 'abc@naver.com';CREATE TABLE `room_info` (
   `cost` int(11) NOT NULL,
   `s_date` date NOT NULL,
   `e_date` date NOT NULL,
-  `RoomScore` double unsigned zerofill NOT NULL DEFAULT '0000000000000000000000',
   `add1` varchar(45) NOT NULL,
   `add2` varchar(45) NOT NULL,
   `add3` varchar(45) NOT NULL,
