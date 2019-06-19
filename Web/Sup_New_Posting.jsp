@@ -24,6 +24,34 @@
 		}
 	}
 	
+	function isNum() 
+	{
+		var a = document.getElementById("max");
+		var b = document.getElementById("bedroom");
+		var c = document.getElementById("price");
+		var ch = true;
+		if(isNaN(a.value)) {
+			alert("수용 인원에는 숫자를 입력하세요");
+			ch = false;
+		}
+		else {
+			if(isNaN(b.value)) {
+				alert("침실수에는 숫자를 입력하세요");
+				ch = false;
+			}
+			else{
+				if(isNaN(c.value)) {
+					alert("일박요금에는 숫자를 입력하세요");
+					ch = false;
+				}
+			}
+		}
+		if(ch)
+			return true;
+		else
+			return false;
+	}
+	
 	function expireSession()
 	{
 		alert("로그인 시간이 만료되었습니다. 다시 로그인해주세요");
@@ -64,7 +92,7 @@
 	<br>
 
 	<!--center-->
-	<form action = "Update.jsp" method = "post">
+	<form action = "Update.jsp" method = "post" id = "posting">
 		<div class="container">
 			<table>
 				<thead>
@@ -92,11 +120,11 @@
 					<tr>
 						<th>수용 인원 :</th>
 						<td><input type="text" placeholder="최대 수용인원을 입력하세요. " name="max"
-							required /></td>
+							id = "max" required /></td>
 					</tr>
 					<tr>
 						<th>침실수 :</th>
-						<td><input type="text" placeholder="침실수를 입력하세요. " name="bedroom"
+						<td><input type="text" placeholder="침실수를 입력하세요. " name="bedroom" id="bedroom"
 							required /></td>
 					</tr>
 					<tr>
@@ -123,10 +151,10 @@
 					</tr>
 					<tr>
 						<th>일박요금 :</th>
-						<td ><input type="text" placeholder="금액을 입력하세요. " name="price" /></td>
+						<td ><input type="text" placeholder="금액을 입력하세요. " name="price" id="price" /></td>
 					</tr>
 					<tr style="margin:auto; text-align:center;">
-						<td colspan="2"><input style="width: 20%; margin: auto; height: 30px" type="submit" value="등록" /></td>
+						<td colspan="2"><input style="width: 20%; margin: auto; height: 30px" type="submit" onclick = "if(!isNum()) return false;" value="등록" /></td>
 					</tr>
 
 				</tbody>

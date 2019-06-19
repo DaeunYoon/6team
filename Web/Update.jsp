@@ -112,8 +112,8 @@
 		
 		System.out.println(sql);
 		
-		sql = "insert into room_option(BedNumber, Kitchen, internet, parking, RoomID) values ('" + bed +"', '" + kit +"', '" + inter 
-				+ "', '" + park + "', '" + rid +"')";
+		sql = "insert into room_option(BedNumber, Kitchen, internet, parking, RoomID, content) values ('" + bed +"', '" + kit +"', '" + inter 
+				+ "', '" + park + "', '" + rid +"', '"+ cont +"')";
 		
 		pstmt = con.prepareStatement(sql);
 		pstmt.execute();

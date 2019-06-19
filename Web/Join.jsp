@@ -10,25 +10,42 @@
 	function checkpw() {
 		var pw = document.getElementById('PW').value;
 		var pwch = document.getElementById('PWch').value;
-
+		var ck = 0;
+		var ck2 = 0;
+		var i = 0;
 		if (!pw) {
 			alert("비밀번호를 입력하세요.");
 			document.getElementById("PW").focus();
 			return;
 		}
-		if(pw.length < 8){
+		if (pw.length < 8) {
 			alert("pw는 8자 이상 15이하로 입력하여 주십시오.");
 			return;
 		}
+		//
+
 		for (i = 0; i < pw.length; i++) {
-	        if ((pw.charCodeAt(i) == 0x41 || pw.charCodeAt(i) == 0x5F || pw.charCodeAt(i) == 0x60) 
-	        		&& (pw.charCodeAt(i) < 0x5A && pw.charCodeAt(i) >0x2f )) {
-				document.getElementById("state").value = "1";
-	        } else {
-				alert("비밀번호에는 하나 이상의 특수문자( ? ! @)와 숫자가 포함되어야합니다.");
-				return;
-	        }
-	    }	
+			var c = pw.charAt(i);
+			if ((c == '@' || c =='!' || c == '?')) {
+				ck = 1;
+				break;
+			}
+		}
+		
+		for (i = 0; i < pw.length; i++) {
+			alert(pw.charAt(i));
+
+			if ((pw.charCodeAt(i) < 0x5A && pw.charCodeAt(i) > 0x2f)) {
+				ck2 = 1;
+				break;
+			}
+		}
+
+		if (ck == 0 || ck2 == 0) {
+			alert("비밀번호에는 하나 이상의 특수문자( ? ! @)와 숫자가 포함되어야합니다. " + pw);
+			return;
+		}
+
 		if (pw != pwch) {
 			alert("비밀번호가 일치하지 않습니다.");
 			document.getElementById("PW").focus();
@@ -47,9 +64,11 @@
 			document.userInsertForm.oemail.focus();
 			document.getElementById("ns").value = "0";
 		}
+		else {
+			alert('올바른 이메일 형식입니다.');
 		document.getElementById("ns").value = "1"; //맞으면 1
+		}
 	}
-	
 </script>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -78,9 +97,9 @@
 				<h3>Join</h3>
 				<div>
 					<p>
-						<input type="hidden" id="ns" name="ns" value="0"> 
-						<input type="hidden" id="state" name="state" value="0"> 
-						<input type="text" id="ID" name="ID" placeholder="ID (email)" required>
+						<input type="hidden" id="ns" name="ns" value="0"> <input
+							type="hidden" id="state" name="state" value="0"> <input
+							type="text" id="ID" name="ID" placeholder="ID (email)" required>
 						<button class="btn" type="button" onclick="ch_email()">이메일
 							확인</button>
 						<input type="password" id="PW" name="PW" placeholder="PW"
