@@ -159,7 +159,6 @@
 								//ok
 							} else if (Integer.parseInt(cin[2]) == Integer.parseInt(rin[2])) {
 								//체크인 날짜가 같은 경우
-								System.out.println("equals");
 								out.println("<script>alert('예약이 되어있는 날짜입니다.'); location.href ='Room_Info.jsp?rid="+rid+"'; </script>");
 							} else {
 								//체크아웃 검사해야함 (예약된 체크인 일 < 예약할 체크인 일)
@@ -175,7 +174,6 @@
 							//체크아웃 검사해야함 (예약된 체크인 월 < 예약할 체크인 월 )
 							if(ch == 2 || ch == 0){
 							//ok	
-							System.out.println("여기왔다" + ch);
 							}
 							else{
 								out.println("<script>alert('예약이 되어있는 날짜입니다.'); location.href ='Room_Info.jsp?rid="+rid+"'; </script>");
