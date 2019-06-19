@@ -102,18 +102,18 @@
 				String sql2 = "select room_title from room_info where RoomID ='" +rid+"'";
 				Statement st2 = con.createStatement();
 				ResultSet rs2 = st2.executeQuery(sql2);
-				rs2 = st2.executeQuery(sql);
-
-				String rname = null;
+				rs2 = st2.executeQuery(sql2);
 				
+				String rname = null;
 				//get room title
 				if(rs2.next())
 					rname = rs2.getString(1);
 				rs2.close();
 				st2.close();
-				
+				System.out.println(rname);
 				%>
-				<td> <%=sdate %> ~ <%=edate %></td><td> <a href = "Room_Info.jsp?uid=<%=rid%>" style = "font-decoration : none;" 
+				<td> <%=sdate %> ~ <%=edate %></td>
+				<td> <a href = "Room_Info.jsp?uid=<%=rid%>" style = "font-decoration : none;" 
 				onmouseover="this.style.color='gray'" onmouseout="this.style.color='black'"><%=rname%></a></td> 
 				<td>예약 대기중	</td>
 				<td>
@@ -164,15 +164,9 @@
 		</div>
 	</div>
 
-
-
-
 	<script>
 		document.getElementById("log").addEventListener("click", logout);
 	</script>
-
-
-
 
 </body>
 
