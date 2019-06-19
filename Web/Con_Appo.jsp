@@ -59,7 +59,8 @@
 				"1234");
 		
 		//get not replied reserve info 
-		String sql = "select RoomId,StartDate,EndDate,reserveNum,conform from room_reserve_info where guestID = '" + Id +"' and conform = '0' order by StartDate";
+		String sql = "select RoomId,StartDate,EndDate,reserveNum,conform from room_reserve_info where guestID = '" + Id +"' and conform = '0'";
+		System.out.println(sql);
 		Statement st = null;
 		st = con.createStatement();
 		ResultSet rs = st.executeQuery(sql);
@@ -109,9 +110,10 @@
 					rname = rs2.getString(1);
 				rs2.close();
 				st2.close();
+				System.out.println(rname);
 				%>
 				<td> <%=sdate %> ~ <%=edate %></td>
-				<td> <a href = "Room_Info.jsp?rid=<%=rid%>" style = "font-decoration : none;" 
+				<td> <a href = "Room_Info.jsp?uid=<%=rid%>" style = "font-decoration : none;" 
 				onmouseover="this.style.color='gray'" onmouseout="this.style.color='black'"><%=rname%></a></td> 
 				<td>예약 대기중	</td>
 				<td>
