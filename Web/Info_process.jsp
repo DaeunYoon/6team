@@ -53,14 +53,21 @@
 		String name = request.getParameter("name");
 		String tel = request.getParameter("tel");
 		
-		int stt = 0;//공급자
-		String st = request.getParameter("type");
+		String sql = null;
 
-		System.out.println(st);
-		if(st.equals("consumer"))
-			stt = 1; //소비자
+		if(id != null) {
+			int stt = 0;//공급자
+			String st = request.getParameter("type");
+
+			if(st.equals("consumer")) {
+				stt = 1; //소비자
+			}
+			sql = "Update account set Username ='"+name+"', PhoneNumber = '" +tel+ "' Where ID = '"+id+"'";
+		}
+		else {
+			sql = "Update account set PW ='"+pw+"'";
+		}
 		
-		String sql = "Update account set pw = '" + pw + "', Username ='"+name+"', PhoneNumber = '" +tel+ "' Where ID = '"+id+"'";
 		PreparedStatement pstmt = null;
 		pstmt = con.prepareStatement(sql);
 		pstmt.execute();
@@ -73,10 +80,8 @@
 	<script>
 	alert("개인정보가 변경되었습니다.");
 	
-	if(<%=stt%>)
-		location.href = "Con_Main.jsp";
-	else
-		location.href = "Sup_Main.jsp";
+	location.href = "Main.jsp";
+	
 	</script>
 
 	<!--logout function-->

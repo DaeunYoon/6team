@@ -23,6 +23,58 @@
 		}
 	}
 	
+	var ck = 0;
+	var ck2 = 0;
+	function checkpw()
+	{
+		var pw = document.getElementById("PW").value;
+		var pwch = document.getElementById("PWcheck").value;
+		
+		var i = 0;
+		if (!pw) {
+			alert("비밀번호를 입력하세요.");
+			document.getElementById("PW").focus();
+			return;
+		}
+		if (pw.length < 8) {
+			alert("pw는 8자 이상 15이하로 입력하여 주십시오.");
+			return;
+		}
+		//
+
+		for (i = 0; i < pw.length; i++) {
+			var c = pw.charAt(i);
+			if ((c == '@' || c =='!' || c == '?')) {
+				ck = 1;
+				break;
+			}
+		}
+		
+		for (i = 0; i < pw.length; i++) {
+			if ((pw.charCodeAt(i) < 0x5A && pw.charCodeAt(i) > 0x2f)) {
+				ck2 = 1;
+				break;
+			}
+		}
+
+		if (ck == 0 || ck2 == 0) {
+			alert("비밀번호에는 하나 이상의 특수문자( ? ! @)와 숫자가 포함되어야합니다. ");
+			return;
+		}
+
+		if (pw != pwch) {
+			alert("비밀번호가 일치하지 않습니다.");
+			document.getElementById("PW").focus();
+			document.getElementById("state").value = "0";
+		} else {
+			alert("비밀번호가 일치합니다.");
+			document.getElementById("name").focus();
+			document.getElementById("state").value = "1";
+		}
+	}
+	
+	
+	
 	function expireSession()
 	{
 		alert("로그인 시간이 만료되었습니다. 다시 로그인해주세요");
@@ -47,32 +99,34 @@
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb?serverTimezone=UTC", "root",
 					"1234");
 
-			String sql = "select ID, PW, Username, state, PhoneNumber, evaluation from account where id = '" + Id + "'";
+			String sql = "select PW,state from account where id = '" + Id + "'";
 			Statement stmt = null;
 			stmt = con.createStatement();
 			ResultSet rs = null;
 			rs = stmt.executeQuery(sql);
-			System.out.println(sql);
-			String name = null;
-			String tel = null;
+
 			String pw = null;
-			String id = null;
-			String eval = null;
+
 			int st = 0;
 
 			if (rs.next()) {
-				id = rs.getString("ID");
 				pw = rs.getString("PW");
-				name = rs.getString("Username");
 				st = rs.getInt("state");
-				tel = rs.getString("PhoneNumber");
-				eval = rs.getString("evaluation");
 			}
 			
 			if(st == 1) {
 	%>
-
-
+	<script>
+	function checkForm()
+	{
+		if(ck == 1 && ch2 ==1)
+			return true;
+		else {
+			alert("비밀번호 확인이 일치하지 않습니다");
+			return false;
+		}		
+	}
+</script>
 	<!--header-->
 	<div class="header">
 		<a href="Main.jsp"><h1 style="color: black;">Room&nbsp;Share</h1></a>
@@ -105,34 +159,17 @@
 <!--center-->
 	<form action="Info_process.jsp" method="post">
 		<fieldset>
-			<h3>내 별점</h3>
-			<%=eval %> / 5 점
-		</fieldset>
-		<fieldset>
 			<h3>개인정보관리</h3>
-			<div>
+			<div>			
 				<p>
-					ID <input type="text" id="ID" name="ID" value="<%=id%>"
-						readonly> 
-					</p>
-					<button type = "button" onclick = "location.href = 'Pw_Manage.jsp'">비밀번호 변경</button>
-				<p>
-					NAME <input type="text" id="name" name="name" value="<%=name%>"
-						required>
+					새로운 PW <input type="password" id="PW" name="PW"
+						 required> 
+					PW 확인 <input type="password"
+						id="PWcheck" name="db_PWch" required>
 				</p>
-				<%
-					if (st == 1)
-						out.println("<p><input type = 'text' name = 'type' value = 'consumer' readonly></p>");
-					else
-						out.println("<p><input type = 'text' name = 'type' value = 'provider' readonly></p>");
-				%>
-				<p>
-					TEL <input type="tel" id="tel" name="tel" value="<%=tel%>"
-						required>
-				</p>
-				<br>
-				<p>
-					<button class="btn" type="submit">수정</button>
+				<button class="btn" type="button" onclick="checkpw()">비밀번호
+					확인</button>
+					<button class="btn" type="submit" onclick = "if(!checkForm()) return false;">수정</button>
 				</p>
 			</div>
 		</fieldset>
