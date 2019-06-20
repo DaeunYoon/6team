@@ -125,24 +125,29 @@
 				st2.close();
 				
 				%>
+				<form action = 'Eval_Update.jsp' metho = "post">
 				<td> <%=sdate %> ~ <%=edate %></td><td> 
 				<a href = "Room_Info.jsp?rid=<%=rid%>" style = "font-decoration : none;" 
 				onmouseover="this.style.color='gray'" onmouseout="this.style.color='black'"><%=rname%></a></td> 
 				<td> <a href = "Look_Acco.jsp?uid=<%=host%>" style = "font-decoration : none;" 
 				onmouseover="this.style.color='gray'" onmouseout="this.style.color='black'"><%=host%></a></td>
 				
-				<td><select name="별점">
-					<%
-						for (int i = 1; i <= 5; i++)
-							out.println("<option value = '" + i + "'>" + i + "</option>");
-					%>
+				<td>
+				<select name = "eval" style = "position:absolute; y-index:1; margin:1%">
+								<option value = "1">1</option>
+								<option value = "2">2</option>
+								<option value = "3">3</option>
+								<option value = "4">4</option>
+								<option value = "5" selected>5</option>
 				</select>
-				<button type="button" value="별점" name="eval" onclick="location.href = 'notifi.jsp?reser='"+ host +"'">별점주기</button>
+				<input type = "hidden" value = <%=host %> name = "eid">
+				<button type="submit" value="별점" style ="width:50%;">별점주기</button>
 				</td>
 			
 				<td><button type="button" value="예약자" name="reser"
-										onclick="location.href = 'notifi.jsp?reser='"+ host +"'">신고하기</button></td>
+										onclick="location.href = 'notifi.jsp?reser=daeun'">신고하기</button></td>
 				</tr>
+				</form>
 				<%
 				}
 	}
@@ -169,7 +174,7 @@
 	<br>
 
 	<!--center-->
-	<form action="notifi.jsp" method="POST">
+	<form action="Eval_Update.jsp" method="POST">
 		<div class="container">
 			<table>
 				<caption style="font-weight: bold; font-size: 160%; padding: 5px">이용내역</caption>
@@ -178,6 +183,7 @@
 					<th>날짜</th>
 					<th>방 이름</th>
 					<th>소비자</th>
+					<th>별점주기</th>
 					<th>신고하기</th>
 				</tr>
 				</tread>
@@ -198,6 +204,17 @@
 				onmouseover="this.style.color='gray'" onmouseout="this.style.color='black'"><%=title%></a></td> 
 				<td> <a href = "Look_Acco.jsp?uid=<%=cid%>" style = "font-decoration : none;" 
 				onmouseover="this.style.color='gray'" onmouseout="this.style.color='black'"><%=cid%></a></td> 
+				<td>
+				<select name = "eval" style = "position:absolute; y-index:1; margin:1%">
+								<option value = "1">1</option>
+								<option value = "2">2</option>
+								<option value = "3">3</option>
+								<option value = "4">4</option>
+								<option value = "5" selected>5</option>
+				</select>
+				<input type = "hidden" value = <%=cid %> name = "eid">
+				<button type="submit" value="별점" style ="width:50%;">별점주기</button>
+				</td>
 				<td><button type="button" value="예약자" name="reser"
 										onclick="location.href = 'notifi.jsp?reser=daeun'">신고하기</button></td>
 				</tr>
