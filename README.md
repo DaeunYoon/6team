@@ -1,6 +1,6 @@
 # RoomShare
 This program is made by 2017113617_문준범 2017112099_윤다은 while 2019/Software Engineering lecture
-The program is made for Roomsharing between users and run on web browser
+The program is made for Roomsharing between users and run on web browser.
 The program support functions like signup, login, Editing user information, registeration room, reservation room, confirm reservation, Search room information, and so on.
 
 
