@@ -109,7 +109,7 @@
 
 					<p>
 						<input type="text" id="name" name="name" placeholder="NAME"
-							required>
+							required maxlength="15">
 					</p>
 					<p>
 						<input type="tel" name="tel" placeholder="TELEPHONE NUM" required>
